@@ -1,0 +1,103 @@
+* {
+    border: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: Arial;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+}
+
+.wrapper{
+    width: 55vw;
+}
+
+#primary_table-container {
+    width: 100%;
+}
+
+#primary_table {
+    border-collapse: collapse;
+    width: 100%;
+    font-weight: bold;
+    font-size: 1em;
+}
+
+.table-caption {
+    margin-bottom: 6px;
+}
+
+.main-logo {
+    width: 650px;
+    height: 90px;
+}
+
+.sector{
+    border: 2px solid #000;
+    padding: 1px;
+}
+
+
+tbody > tr:nth-child(1) > td{
+    padding-top: 2.5px;
+    text-align: center;
+}
+
+
+#secundary_table-container {
+    width: 100%;
+}
+
+
+#secundary_table {
+    margin-top: 6px;
+    border-collapse: collapse;
+    width: 100%;
+    font-weight: bold;
+    font-size: 1em;
+}
+
+.cel-secundary_table{
+    border: 2px solid #000;
+}
+
+#secundary_table > thead > tr > th:nth-child(1){
+    width: 5%;
+}
+#secundary_table > thead > tr > th:nth-child(2){
+    width: 10%;
+}
+#secundary_table > thead > tr > th:nth-child(3){
+    width: 32.5%;
+}
+#secundary_table > thead > tr > th:nth-child(4){
+    width: 32.5%;
+}
+#secundary_table > thead > tr > th:nth-child(5){
+    width: 8%;
+}
+#secundary_table > thead > tr > th:nth-child(6){
+    width: 12%;
+}
+
+
+#btn-impress{
+    font-size: 1em;
+    font-weight: bold;
+    background-color: #7a7a7a;
+    color: #fff;
+    padding: 6px 10px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: .3s all ease-in-out;
+}
+
+#btn-impress:hover{
+    background-color: #7a7a7ada;
+    transform: scale(1.03);
+}
