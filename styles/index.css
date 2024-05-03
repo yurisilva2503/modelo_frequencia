@@ -14,7 +14,7 @@
     align-items: center;
     width: 100vw;
     height: 100vh;
-    background-color: #f8f8f8;
+    background-color: #fffffff1;
 }
 
 .form {
@@ -39,7 +39,7 @@
     gap: 5px;
     padding: 5px;
     margin-bottom: 5px;
-    background-color: #0069bf;
+    background-image: linear-gradient(to right, #0b6ebe, #1c6db4, #2772b3);
     color: #fff;
     border-radius: 5px 5px 0px 0px;
 }
@@ -51,7 +51,7 @@
 .subtitle {
     font-weight: 400;
     font-size: 1em;
-    color: #ffffffe0;
+    color: #ffffffe7;
 }
 
 .input-container {
@@ -94,7 +94,7 @@
     height: 40px;
     font-size: 1.2em;
     font-weight: bold;
-    background-color: #0069BF;
+    background-image: linear-gradient(to right, #0b6ebe, #1c6db4, #2772b3);
     color: #fff;
     border: none;
     border-radius: 3px;
@@ -111,11 +111,11 @@
     display: flex;
     justify-content: center;
     width: 100%;
-    margin: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .image-container>img {
-    width: 90%;
+    width: 88%;
     height: 108px;
-    filter: saturate(1), contrast(1.1);
 }
