@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SECTET - Frequência</title>
+    <link rel="icon" href="./assets/images/bandeira_PARÁ.png" type="image/png">
+    <link rel="stylesheet" href="./styles/impress.css"/>
+    <script src="./scripts/index.js" defer></script>
+  </head>
+  <body onload="fillMonthTable(4)">
+    <div id="wrapper">
+      <div id="primary_table-container">
+        <table id="primary_table">
+          <thead>
+            <caption class="primary_table-caption">
+              <img
+                src="./assets/images/logo_SECTET.png"
+                alt="Logo da SECTET"
+                class="main-logo"
+              />
+            </caption>
+            <tr>
+              <th class="sector" scope="col" colspan="2">
+                Diretoria de Administração e Finanças - DAF
+              </th>
+            </tr>
+            <tr>
+              <th class="sector" scope="col" colspan="2">
+                Gerência de Tecnologia da Informação e Comunicação - GETIC
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="title" scope="col" colspan="2">FOLHA DE FREQUÊNCIA</td>
+            </tr>
+            <tr>
+              <td class="body-infos_primary">
+                Servidor:
+                <span id="name"> Yuri Gabriel da Silva Ferreira </span>
+              </td>
+              <td>
+                Mês:
+                <span id="month"> Dezembro/2024 </span>
+              </td>
+            </tr>
+            <tr>
+              <td class="body-infos_primary">
+                Cargo: <span id="position"> Estagiário </span>
+              </td>
+              <td>Matrícula: 
+                <span id="matriculation"> 9999999/9 </span>
+              </td>
+            </tr>
+            <tr>
+              <td class="body-infos_primary">Local de Exercício: GETIC</td>
+              <td>Carga Horária: 
+                <span id="workload"> 4h </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div id="secundary_table-container">
+        <table id="secundary_table" border="1">
+          <thead>
+            <tr>
+              <th class="cel-secundary_table" scope="col"></th>
+              <th class="cel-secundary_table" scope="col"></th>
+              <th class="cel-secundary_table" scope="col" colspan="2">Manhã</th>
+              <th class="cel-secundary_table" scope="col" colspan="2">Tarde</th>
+              <th class="cel-secundary_table" scope="col"></th>
+              <th class="cel-secundary_table" scope="col"></th>
+            </tr>
+            <tr>
+              <td class="cel-secundary_table -subcolumn -day" scope="row">
+                Dia
+              </td>
+              <td class="cel-secundary_table -subcolumn -rubric" scope="row">
+                Rubrica do Servidor
+              </td>
+              <td class="cel-secundary_table -subcolumn -entrytime" scope="row">
+                Hora Entrada
+              </td>
+              <td class="cel-secundary_table -subcolumn -exittime" scope="row">
+                Hora Saída
+              </td>
+              <td class="cel-secundary_table -subcolumn -entrytime" scope="row">
+                Hora Entrada
+              </td>
+              <td class="cel-secundary_table -subcolumn -exittime" scope="row">
+                Hora Saída
+              </td>
+              <td
+                class="cel-secundary_table -subcolumn -occurrences"
+                scope="row"
+              >
+                Ocorrências
+              </td>
+              <td
+                class="cel-secundary_table -subcolumn -observations"
+                scope="row"
+              >
+                Observação
+              </td>
+            </tr>
+          </thead>
+        </table>
+    </div>
+    <footer id="footer">
+      <div id="date-container">
+        Data: ___/___/_____
+      </div>
+      <div id="signatures">
+          <div class="signature">
+              <span>__________________________________</span>
+              <p>Assinatura do Servidor</p>
+          </div>
+          <div class="signature">
+              <span>__________________________________</span>
+              <p>Assinatura da Chefia Imediata</p>
+          </div>
+      </div>
+      <p id="address">
+        Av. Conselheiro Furtado, 2520 - Cremação - CEP 66.040-100 - Belém/PA
+      </p>
+    </footer>
+    <div class="button-container">
+      <button id="btn-impress" onclick="makePDF()">Imprimir</button>
+    </div>
+  </body>
+</html>
