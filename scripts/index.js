@@ -7,7 +7,6 @@ const secundary_table = document.getElementById(
 ).innerHTML;
 const wrapper = document.getElementById("wrapper");
 const btn = document.getElementById("btn-impress");
-const footer = document.getElementById("footer");
 const date_container = document.getElementById("date-container");
 const signatures = document.getElementById("signatures");
 const address = document.getElementById("address");
@@ -56,5 +55,5 @@ const makePDF = () => {
   window.print();
 
   btn.style.display = "block";
-  wrapper.style.width = "55%";
+  wrapper.style.width = "50%";
 };

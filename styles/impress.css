@@ -15,7 +15,7 @@ body {
 }
 
 #wrapper {
-  width: 55%;
+  width: 50%;
   height: 95%;
 }
 
@@ -99,7 +99,7 @@ body {
   text-align: center;
   font-size: 0.85em;
   padding: 4px;
-  background-color: #999;
+  background-color: #a7a7a7;
 }
 
 .cel-secundary_table.-subcolumn.-day {

@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: 'Poppins', Arial;
+    font-weight: bold;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: #f8f8f8;
+}
+
+.form {
+    background-color: #ffffffd2;
+    box-shadow: 1px 1px 10px #0000003a;
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 45%;
+    height: 66%;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.title-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    gap: 5px;
+    padding: 5px;
+    margin-bottom: 5px;
+    background-color: #0069bf;
+    color: #fff;
+    border-radius: 5px 5px 0px 0px;
+}
+
+.title {
+    font-size: 3em;
+}
+
+.subtitle {
+    font-weight: 400;
+    font-size: 1em;
+    color: #ffffffe0;
+}
+
+.input-container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
+    padding: 5px;
+}
+
+.input-control {
+    display: flex;
+    flex-direction: column;
+    margin: 4px;
+}
+
+.input-control>label {
+    font-size: 1.1em;
+    margin-bottom: 2px;
+}
+
+.input-control>input, select {
+    font-size: 1.15em;
+    font-weight: 400;
+    border: 1px solid #0000003a;
+    border-radius: 3px;
+    padding: 5px;
+}
+
+.button-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 8px;
+}
+
+.button-container>button {
+    width: 200px;
+    height: 40px;
+    font-size: 1.2em;
+    font-weight: bold;
+    background-color: #0069BF;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: 0.2s all ease-in-out;
+}
+
+.button-container>button:hover {
+    filter: brightness(1.1);
+    transform: scale(1.03);
+}
+
+.image-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: 10px;
+}
+
+.image-container>img {
+    width: 90%;
+    height: 108px;
+    filter: saturate(1), contrast(1.1);
+}
