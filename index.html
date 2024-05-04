@@ -9,10 +9,10 @@
 </head>
 <body>
     <div class="wrapper">
-        <form class="form">
+        <form class="form" onsubmit="event.preventDefault();">
             <div class="title-container">
                 <h1 class="title">Folha de Frequência</h1>
-                <h2 class="subtitle">Preencha os campos abaixo para registrar sua frequência</h2>
+                <h2 class="subtitle">Preencha os campos abaixo para gerar sua frequência em PDF</h2>
             </div>
             <div class="input-container">
                 <div class="input-control">
@@ -52,38 +52,34 @@
                     <label>Mês</label>
                     <select>
                         <option value="none" selected disabled>Escolha um mês</option>
-                        <option value="january">Janeiro</option>
-                        <option value="february">Fevereiro</option>
-                        <option value="march">Março</option>
-                        <option value="april">Abril</option>
-                        <option value="may">Maio</option>
-                        <option value="june">Junho</option>
-                        <option value="july">Julho</option>
-                        <option value="august">Agosto</option>
-                        <option value="september">Setembro</option>
-                        <option value="october">Outubro</option>
-                        <option value="november">Novembro</option>
-                        <option value="december">Dezembro</option>
+                        <option value="1">Janeiro</option>
+                        <option value="2">Fevereiro</option>
+                        <option value="3">Março</option>
+                        <option value="4">Abril</option>
+                        <option value="5">Maio</option>
+                        <option value="6">Junho</option>
+                        <option value="7">Julho</option>
+                        <option value="8">Agosto</option>
+                        <option value="9">Setembro</option>
+                        <option value="10">Outubro</option>
+                        <option value="11">Novembro</option>
+                        <option value="12">Dezembro</option>
                     </select>
                 </div>
                 <div class="input-control">
                     <label>Carga Horária</label>
                     <select>
                         <option value="none" selected disabled>Escolha um valor</option>
-                        <option value="four">4</option>
-                        <option value="six">6</option>
-                        <option value="eight">8</option>
+                        <option value="4">4</option>
+                        <option value="6">6</option>
+                        <option value="8">8</option>
                     </select>
                 </div>
             </div>
             <div class="button-container">
                 <button>Gerar Frequência</button>
             </div>
-            <div class="image-container">
-                <img src="./assets/images/logo_SECTET.png" alt="Logo da SECTET">
-            </div>
         </form>
-        
     </div>
 </body>
 </html>

@@ -15,17 +15,28 @@ const currentYear = new Date().getFullYear();
 // Funções
 const fillMonthTable = (month) => {
   const daysInMonth = new Date(currentYear, month, 0).getDate();
+  const dayOfWeekCellContent = (isSaturday, isSunday) =>
+    isSaturday ? "Sábado" : isSunday ? "Domingo" : "";
+  const weekendClass = (isSaturday, isSunday) =>
+    isSaturday || isSunday ? "weekend" : "";
+
   for (let i = 1; i <= daysInMonth; i++) {
+    const currentDate = new Date(currentYear, month - 1, i);
+    const isSaturday = currentDate.getDay() === 6;
+    const isSunday = currentDate.getDay() === 0;
+    const cellContent = dayOfWeekCellContent(isSaturday, isSunday);
+    const cellClass = weekendClass(isSaturday, isSunday);
+
     const row = `
       <tr>
-        <td class="cel-secundary_table -day">${i}</td>
-        <td class="cel-secundary_table -rubric"></td>
-        <td class="cel-secundary_table -entrytime"></td>
-        <td class="cel-secundary_table -exittime"></td>
-        <td class="cel-secundary_table -entrytime"></td>
-        <td class="cel-secundary_table -exittime"></td>
-        <td class="cel-secundary_table -occurrences"></td>
-        <td class="cel-secundary_table -observations"></td>
+        <td class="cel-secundary_table -day ${cellClass}">${i}</td>
+        <td class="cel-secundary_table -rubric ${cellClass}">${cellContent}</td>
+        <td class="cel-secundary_table -entrytime ${cellClass}">${cellContent}</td>
+        <td class="cel-secundary_table -exittime ${cellClass}">${cellContent}</td>
+        <td class="cel-secundary_table -entrytime ${cellClass}">${cellContent}</td>
+        <td class="cel-secundary_table -exittime ${cellClass}">${cellContent}</td>
+        <td class="cel-secundary_table -occurrences ${cellClass}">${cellContent}</td>
+        <td class="cel-secundary_table -observations ${cellClass}">${cellContent}</td>
       </tr>
     `;
     document
@@ -46,8 +57,7 @@ const fillMonthTable = (month) => {
     signatures.style.marginTop = "2%";
     address.style.marginTop = "3%";
   }
-  
-}
+};
 
 const makePDF = () => {
   btn.style.display = "none";
