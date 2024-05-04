@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SECTET - Preenchimento</title>
-    <link rel="icon" href="./assets/images/bandeira_PARÁ.png" type="image/png">
+    <title>SECTET - Frequência</title>
+    <link rel="icon" href="./assets/images/flag_PARÁ.png" type="image/png">
     <link rel="stylesheet" href="./styles/index.css">
     <link rel="stylesheet" href="./styles/impress.css">
     <script src="./scripts/index.js" defer></script>
@@ -21,41 +21,125 @@
             <div class="index_input-container">
                 <div class="index_input-control">
                     <label>Setor Primário</label>
-                    <select id="index_select-sector-primary">
-                        <option value="none" selected disabled>Escolha um setor</option>
-                        <option value="GETIC">DAF</option>
+                    <select id="index_select-sector-primary" required>
+                        <option value="null" selected disabled>Escolha um setor</option>
+                        <option value="none">Nenhum</option>
+                        <option value="COLOP">COLOP</option>
+                        <option value="COEDS">COEDS</option>
+                        <option value="CONFIN">CONFIN</option>
+                        <option value="CGEPES">CGEPES</option>
+                        <option value="GEPC">GEPC</option>
+                        <option value="COMSER">COMSER</option>
+                        <option value="DAF">DAF</option>
+                        <option value="Gerência Financeira (PRONATEC)">Gerência Financeira (PRONATEC)</option>
+                        <option value="GECONC">GECONC</option>
+                        <option value="DCT">DCT</option>
+                        <option value="NUPLAN">NUPLAN</option>
+                        <option value="CAEI">CAEI</option>
+                        <option value="CCTI">CCTI</option>
+                        <option value="NUCE">NUCE</option>
+                        <option value="Assessoria DCTV">Assessoria DCTV</option>
+                        <option value="GETIC">GETIC</option>
+                        <option value="CTDS">CTDS</option>
+                        <option value="CETEC">CETEC</option>
+                        <option value="EETEPAS/DETEC">EETEPAS/DETEC</option>
+                        <option value="Assessoria DETEC">Assessoria DETEC</option>
+                        <option value="NUENG">NUENG</option>
+                        <option value="COEAD">COEAD</option>
+                        <option value="COFIC">COFIC</option>
+                        <option value="ASCOM">ASCOM</option>
+                        <option value="SECAD">SECAD</option>
+                        <option value="NUCAD">NUCAD</option>
+                        <option value="Sala secretário">Sala secretário</option>
+                        <option value="Gabinete">Gabinete</option>
                     </select>
                 </div>
                 <div class="index_input-control">
                     <label>Setor Secundário</label>
-                    <select id="index_select-sector-secondary">
-                        <option value="none" selected disabled>Escolha um setor</option>
+                    <select id="index_select-sector-secondary" required>
+                        <option value="null" selected disabled>Escolha um setor</option>
+                        <option value="none">Nenhum</option>
+                        <option value="COLOP">COLOP</option>
+                        <option value="COEDS">COEDS</option>
+                        <option value="CONFIN">CONFIN</option>
+                        <option value="CGEPES">CGEPES</option>
+                        <option value="GEPC">GEPC</option>
+                        <option value="COMSER">COMSER</option>
+                        <option value="DAF">DAF</option>
+                        <option value="Gerência Financeira (PRONATEC)">Gerência Financeira (PRONATEC)</option>
+                        <option value="GECONC">GECONC</option>
+                        <option value="DCT">DCT</option>
+                        <option value="NUPLAN">NUPLAN</option>
+                        <option value="CAEI">CAEI</option>
+                        <option value="CCTI">CCTI</option>
+                        <option value="NUCE">NUCE</option>
+                        <option value="Assessoria DCTV">Assessoria DCTV</option>
                         <option value="GETIC">GETIC</option>
+                        <option value="CTDS">CTDS</option>
+                        <option value="CETEC">CETEC</option>
+                        <option value="EETEPAS/DETEC">EETEPAS/DETEC</option>
+                        <option value="Assessoria DETEC">Assessoria DETEC</option>
+                        <option value="NUENG">NUENG</option>
+                        <option value="COEAD">COEAD</option>
+                        <option value="COFIC">COFIC</option>
+                        <option value="ASCOM">ASCOM</option>
+                        <option value="SECAD">SECAD</option>
+                        <option value="NUCAD">NUCAD</option>
+                        <option value="Sala secretário">Sala secretário</option>
+                        <option value="Gabinete">Gabinete</option>
                     </select>
                 </div>
                 <div class="index_input-control">
                     <label>Nome</label>
-                    <input type="text" placeholder="Digite seu nome..." id="index_input-name">
+                    <input type="text" placeholder="Digite seu nome..." id="index_input-name" required>
                 </div>
                 <div class="index_input-control">
                     <label>Cargo</label>
-                    <input type="text" placeholder="Digite seu cargo..." id="index_input-role">
+                    <input type="text" placeholder="Digite seu cargo..." id="index_input-role" required>
                 </div>
                 <div class="index_input-control">
                     <label>Local de Exercício</label>
-                    <select id="index_select-location">
-                        <option value="none" selected disabled>Escolha um local</option>
-                        <option value="getic">GETIC</option>
+                    <select id="index_select-location" required>
+                        <option value="null" selected disabled>Escolha um local</option>
+                        <option value="none">Nenhum</option>
+                        <option value="COLOP">COLOP</option>
+                        <option value="COEDS">COEDS</option>
+                        <option value="CONFIN">CONFIN</option>
+                        <option value="CGEPES">CGEPES</option>
+                        <option value="GEPC">GEPC</option>
+                        <option value="COMSER">COMSER</option>
+                        <option value="DAF">DAF</option>
+                        <option value="Gerência Financeira (PRONATEC)">Gerência Financeira (PRONATEC)</option>
+                        <option value="GECONC">GECONC</option>
+                        <option value="DCT">DCT</option>
+                        <option value="NUPLAN">NUPLAN</option>
+                        <option value="CAEI">CAEI</option>
+                        <option value="CCTI">CCTI</option>
+                        <option value="NUCE">NUCE</option>
+                        <option value="Assessoria DCTV">Assessoria DCTV</option>
+                        <option value="GETIC">GETIC</option>
+                        <option value="CTDS">CTDS</option>
+                        <option value="CETEC">CETEC</option>
+                        <option value="EETEPAS/DETEC">EETEPAS/DETEC</option>
+                        <option value="Assessoria DETEC">Assessoria DETEC</option>
+                        <option value="NUENG">NUENG</option>
+                        <option value="COEAD">COEAD</option>
+                        <option value="COFIC">COFIC</option>
+                        <option value="ASCOM">ASCOM</option>
+                        <option value="SECAD">SECAD</option>
+                        <option value="NUCAD">NUCAD</option>
+                        <option value="Sala secretário">Sala secretário</option>
+                        <option value="Gabinete">Gabinete</option>
                     </select>
                 </div>
                 <div class="index_input-control">
                     <label>Matrícula</label>
-                    <input type="text" placeholder="Digite sua matrícula..." id="index_input-registration">
+                    <input type="text" minlength="7" maxlength="9" placeholder="Digite sua matrícula..." id="index_input-registration" required>
                 </div>
                 <div class="index_input-control">
                     <label>Mês</label>
-                    <select id="index_select-month">
-                        <option value="none" selected disabled>Escolha um mês</option>
+                    <select id="index_select-month" required>
+                        <option value="null" selected disabled>Escolha um mês</option>
                         <option value="1">Janeiro</option>
                         <option value="2">Fevereiro</option>
                         <option value="3">Março</option>
@@ -72,8 +156,8 @@
                 </div>
                 <div class="index_input-control">
                     <label>Carga Horária</label>
-                    <select id="index_select-workload">
-                        <option value="none" selected disabled>Escolha um valor</option>
+                    <select id="index_select-workload" required>
+                        <option value="null" selected disabled>Escolha um valor</option>
                         <option value="4">4</option>
                         <option value="6">6</option>
                         <option value="8">8</option>
@@ -96,12 +180,10 @@
                     </caption>
                     <tr>
                         <th class="impress_sector" scope="col" colspan="2" id="impress_primary-sector">
-                            Diretoria de Administração e Finanças - DAF
                         </th>
                     </tr>
                     <tr>
                         <th class="impress_sector" scope="col" colspan="2" id="impress_secondary-sector">
-                            Gerência de Tecnologia da Informação e Comunicação - GETIC
                         </th>
                     </tr>
                 </thead>
@@ -112,25 +194,28 @@
                     <tr>
                         <td class="impress_infos_primary">
                             Servidor:
-                            <span id="impress_name"> Yuri Gabriel da Silva Ferreira </span>
+                            <span id="impress_name"></span>
                         </td>
                         <td>
                             Mês:
-                            <span id="impress_month"> Dezembro/2024 </span>
+                            <span id="impress_month"></span>
                         </td>
                     </tr>
                     <tr>
                         <td class="impress_infos-primary">
-                            Cargo: <span id="impress_position"> Estagiário </span>
+                            Cargo: <span id="impress_position"></span>
                         </td>
                         <td>Matrícula:
-                            <span id="matriculation"> 9999999/9 </span>
+                            <span id="impress_matriculation"></span>
                         </td>
                     </tr>
                     <tr>
-                        <td class="impress_infos_primary">Local de Exercício: GETIC</td>
+                        <td class="impress_infos_primary">
+                            Local de Exercício: 
+                            <span id="impress_location"></span>
+                        </td>
                         <td>Carga Horária:
-                            <span id="impress_workload"> 4h </span>
+                            <span id="impress_workload"></span>
                         </td>
                     </tr>
                 </tbody>
@@ -174,6 +259,8 @@
                         </td>
                     </tr>
                 </thead>
+                <tbody id="impress_secondary-table-tbody">
+                </tbody>
             </table>
             <footer id="impress_footer">
                 <div id="impress_date-container">

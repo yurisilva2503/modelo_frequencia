@@ -7,8 +7,13 @@
 }
 
 body {
-    font-family: 'Poppins', Arial;
-    font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
 }
 
 .index_wrapper {
@@ -21,6 +26,8 @@ body {
     height: 100vh;
     background-color: #fffffff1;
     overflow: auto;
+    font-family: 'Poppins', Arial;
+    font-weight: bold;
 }
 
 .index_form {
@@ -49,12 +56,12 @@ body {
 }
 
 .index_title {
-    font-size: 4em;
+    font-size: 3.5em;
 }
 
 .index_subtitle {
     font-weight: 400;
-    font-size: 1.25em;
+    font-size: 1.1em;
     color: #ffffffe7;
 }
 
@@ -84,6 +91,7 @@ body {
     border-radius: 3px;
     padding: 5px;
     width: 100%;
+    height: 50px;
     font-family: 'Poppins', Arial;
 }
 
@@ -120,5 +128,5 @@ body {
 
 .index_main-logo{
     width: 11%;
-    height: 10%;
+    height: 10.5%;
 }
