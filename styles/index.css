@@ -4,21 +4,26 @@
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
+}
+
+body {
     font-family: 'Poppins', Arial;
     font-weight: bold;
 }
 
-.wrapper {
+.index_wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+    gap: 8px;
     width: 100vw;
     height: 100vh;
     background-color: #fffffff1;
     overflow: auto;
 }
 
-.form {
+.index_form {
     background-color: #ffffffd2;
     box-shadow: 1px 1px 10px #0000003a;
     margin: 5px;
@@ -30,7 +35,7 @@
     overflow: auto;
 }
 
-.title-container {
+.index_title-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -43,17 +48,17 @@
     border-radius: 5px 5px 0px 0px;
 }
 
-.title {
+.index_title {
     font-size: 4em;
 }
 
-.subtitle {
+.index_subtitle {
     font-weight: 400;
     font-size: 1.25em;
     color: #ffffffe7;
 }
 
-.input-container {
+.index_input-container {
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -61,27 +66,32 @@
     padding: 16px;
 }
 
-.input-control {
+.index_input-control {
     display: flex;
     flex-direction: column;
     margin: 4px;
 }
 
-.input-control>label {
+.index_input-control>label {
     font-size: 1.5em;
     margin-bottom: 2px;
 }
 
-.input-control>input, select {
+.index_input-control>input, select {
     font-size: 1.5em;
     font-weight: 400;
     border: 1px solid #0000003a;
     border-radius: 3px;
     padding: 5px;
     width: 100%;
+    font-family: 'Poppins', Arial;
 }
 
-.button-container {
+.index_input-control>input:focus, select:focus {
+    outline: #0b6ebe solid 2px;
+}
+
+.index_button-container {
     width: 100%;
     height: 100%;
     display: flex;
@@ -90,7 +100,7 @@
     margin-bottom: 16px;
 }
 
-.button-container>button {
+.index_button-container>button {
     width: 270px;
     height: 45px;
     font-size: 1.5em;
@@ -103,8 +113,12 @@
     transition: 0.2s all ease-in-out;
 }
 
-.button-container>button:hover {
+.index_button-container>button:hover {
     filter: brightness(1.1);
     transform: scale(1.03);
 }
 
+.index_main-logo{
+    width: 11%;
+    height: 10%;
+}

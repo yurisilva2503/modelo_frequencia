@@ -14,50 +14,51 @@ body {
   height: 100%;
 }
 
-#wrapper {
+#impress_wrapper {
+  display: none;
   width: 50%;
   height: 95%;
 }
 
-#primary_table-container {
+#impress_primary-table-container {
   width: 100%;
 }
 
-#primary_table {
+#impress_primary-table{
   border-collapse: collapse;
   width: 100%;
   font-weight: bold;
   font-size: 0.9em;
 }
 
-.primary_table-caption {
+.impress_primary-table-caption {
   margin-bottom: 6px;
 }
 
-.main-logo {
+.impress_main-logo {
   width: 650px;
   height: 90px;
 }
 
-.sector {
+.impress_sector {
   border: 2px solid #000;
   padding: 1px;
 }
 
-.title {
+.impress_title {
   padding-top: 2.5px;
   text-align: center;
 }
 
-.body-infos_primary {
+.impress_infos-primary {
   width: 77%;
 }
 
-#secundary_table-container {
+#impress_secondary-table-container {
   width: 100%;
 }
 
-#secundary_table {
+#impress_secondary-table {
   margin-top: 6px;
   border-collapse: collapse;
   width: 100%;
@@ -65,73 +66,82 @@ body {
   font-size: 0.9em;
 }
 
-.cel-secundary_table {
+.impress_cel-secondary-table {
   text-align: center;
   padding: 2px;
   border: 2px solid #000;
 }
 
-#secundary_table > thead > tr > th:nth-child(1) {
-  width: 6.5%;
-}
 
-#secundary_table > thead > tr > th:nth-child(2) {
-  width: 13.5%;
-}
-
-#secundary_table > thead > tr > th:nth-child(3) {
-  width: 26.5%;
-}
-
-#secundary_table > thead > tr > th:nth-child(4) {
-  width: 26.5%;
-}
-
-#secundary_table > thead > tr > th:nth-child(5) {
-  width: 13.5%;
-}
-
-#secundary_table > thead > tr > th:nth-child(6) {
-  width: 13.5%;
-}
-
-.cel-secundary_table.-subcolumn {
+.impress_cel-secondary-table.-subcolumn {
   text-align: center;
   font-size: 0.85em;
   padding: 4px;
   background-color: #a7a7a7;
 }
 
-.cel-secundary_table.-subcolumn.-day {
+.impress_cel-secondary-table.-subcolumn.-day {
   width: 5%;
 }
 
-.cel-secundary_table.-subcolumn.-rubric {
+.impress_cel-secondary-table.-subcolumn.-rubric {
   width: 15%;
 }
 
-.cel-secundary_table.-subcolumn.-entrytime {
+.impress_cel-secondary-table.-subcolumn.-entrytime {
   width: 12%;
 }
 
-.cel-secundary_table.-subcolumn.-exittime {
+.impress_cel-secondary-table.-subcolumn.-exittime {
   width: 12%;
 }
 
-.cel-secundary_table.-subcolumn.-occurrences {
+.impress_cel-secondary-table.-subcolumn.-occurrences {
   width: 6%;
 }
 
-.cel-secundary_table.-subcolumn.-observations {
+.impress_cel-secondary-table.-subcolumn.-observations {
   width: 16%;
 }
 
-#date-container{
+#impress_secondary-table  > thead > tr > th:nth-child(1) {
+  width: 6.5%;
+}
+
+#impress_secondary-table  > thead > tr > th:nth-child(2) {
+  width: 13.5%;
+}
+
+#impress_secondary-table  > thead > tr > th:nth-child(3) {
+  width: 26.5%;
+}
+
+#impress_secondary-table  > thead > tr > th:nth-child(4) {
+  width: 26.5%;
+}
+
+#impress_secondary-table  > thead > tr > th:nth-child(5) {
+  width: 13.5%;
+}
+
+#impress_secondary-table  > thead > tr > th:nth-child(6) {
+  width: 13.5%;
+}
+
+#impress_footer{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  height: 5%;
+}
+
+#impress_date-container{
   margin-top: 2%;
   font-weight: bold;
 }
 
-#signatures{
+#impress_signatures{
   width: 100%;
   margin-top: 4%;
   font-weight: bold;
@@ -139,7 +149,7 @@ body {
   justify-content: space-around;
 }
 
-.signature{
+.impress_signature{
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -147,7 +157,7 @@ body {
   font-size: .9em;
 }
 
-#address{
+#impress_address{
   margin-top: 3%;
   display: flex;
   justify-content: center;
@@ -157,22 +167,15 @@ body {
   font-weight: normal;
 }
 
-#footer{
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  width: 100%;
-  height: 5%;
-}
 
-.button-container{
+.impress_button-container{
   display: flex;
   justify-content: center;
   width: 100%;
   margin: 10px;
 }
 
-#btn-impress {
+#impress_btn-impress {
   font-size: 1em;
   font-weight: bold;
   background-color: #0069bf ;
@@ -184,13 +187,13 @@ body {
   transition: 0.2s all ease-in-out;
 }
 
-#btn-impress:hover {
+#impress_btn-impress:hover {
   filter: brightness(1.1);
   transform: scale(1.03);
 }
 
 .weekend {
-    background-color: #a7a7a7;
+  background-color: #a7a7a7;
 }
 
 @media print {

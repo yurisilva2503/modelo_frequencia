@@ -1,56 +1,60 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SECTET - Preenchimento</title>
     <link rel="icon" href="./assets/images/bandeira_PARÁ.png" type="image/png">
     <link rel="stylesheet" href="./styles/index.css">
+    <link rel="stylesheet" href="./styles/impress.css">
+    <script src="./scripts/index.js" defer></script>
 </head>
+
 <body>
-    <div class="wrapper">
-        <form class="form" onsubmit="event.preventDefault();">
-            <div class="title-container">
-                <h1 class="title">Folha de Frequência</h1>
-                <h2 class="subtitle">Preencha os campos abaixo para gerar sua frequência em PDF</h2>
+    <div class="index_wrapper">
+        <form class="index_form" onsubmit="event.preventDefault();">
+            <div class="index_title-container">
+                <h1 class="index_title">Folha de Frequência</h1>
+                <h2 class="index_subtitle">Preencha os campos abaixo para gerar sua frequência em PDF</h2>
             </div>
-            <div class="input-container">
-                <div class="input-control">
+            <div class="index_input-container">
+                <div class="index_input-control">
                     <label>Setor Primário</label>
-                    <select>
+                    <select id="index_select-sector-primary">
                         <option value="none" selected disabled>Escolha um setor</option>
                         <option value="GETIC">DAF</option>
                     </select>
                 </div>
-                <div class="input-control">
+                <div class="index_input-control">
                     <label>Setor Secundário</label>
-                    <select>
+                    <select id="index_select-sector-secondary">
                         <option value="none" selected disabled>Escolha um setor</option>
                         <option value="GETIC">GETIC</option>
                     </select>
                 </div>
-                <div class="input-control">
+                <div class="index_input-control">
                     <label>Nome</label>
-                    <input type="text" placeholder="Digite seu nome...">
+                    <input type="text" placeholder="Digite seu nome..." id="index_input-name">
                 </div>
-                <div class="input-control">
+                <div class="index_input-control">
                     <label>Cargo</label>
-                    <input type="text" placeholder="Digite seu cargo...">
+                    <input type="text" placeholder="Digite seu cargo..." id="index_input-role">
                 </div>
-                <div class="input-control">
+                <div class="index_input-control">
                     <label>Local de Exercício</label>
-                    <select>
+                    <select id="index_select-location">
                         <option value="none" selected disabled>Escolha um local</option>
                         <option value="getic">GETIC</option>
                     </select>
                 </div>
-                <div class="input-control">
+                <div class="index_input-control">
                     <label>Matrícula</label>
-                    <input type="text" placeholder="Digite sua matrícula...">
+                    <input type="text" placeholder="Digite sua matrícula..." id="index_input-registration">
                 </div>
-                <div class="input-control">
+                <div class="index_input-control">
                     <label>Mês</label>
-                    <select>
+                    <select id="index_select-month">
                         <option value="none" selected disabled>Escolha um mês</option>
                         <option value="1">Janeiro</option>
                         <option value="2">Fevereiro</option>
@@ -66,9 +70,9 @@
                         <option value="12">Dezembro</option>
                     </select>
                 </div>
-                <div class="input-control">
+                <div class="index_input-control">
                     <label>Carga Horária</label>
-                    <select>
+                    <select id="index_select-workload">
                         <option value="none" selected disabled>Escolha um valor</option>
                         <option value="4">4</option>
                         <option value="6">6</option>
@@ -76,10 +80,123 @@
                     </select>
                 </div>
             </div>
-            <div class="button-container">
-                <button>Gerar Frequência</button>
+            <div class="index_button-container">
+                <button id="index_button-generate">Gerar Frequência</button>
             </div>
         </form>
+        <img src="./assets/images/logo_SECTET_alt.png" alt="Logo da SECTET" class="index_main-logo">
     </div>
+
+    <div id="impress_wrapper">
+        <div id="impress_primary-table-container">
+            <table id="impress_primary-table">
+                <thead>
+                    <caption class="impress_primary-table-caption">
+                        <img src="./assets/images/logo_SECTET.png" alt="Logo da SECTET" class="impress_main-logo" />
+                    </caption>
+                    <tr>
+                        <th class="impress_sector" scope="col" colspan="2" id="impress_primary-sector">
+                            Diretoria de Administração e Finanças - DAF
+                        </th>
+                    </tr>
+                    <tr>
+                        <th class="impress_sector" scope="col" colspan="2" id="impress_secondary-sector">
+                            Gerência de Tecnologia da Informação e Comunicação - GETIC
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="impress_title" scope="col" colspan="2">FOLHA DE FREQUÊNCIA</td>
+                    </tr>
+                    <tr>
+                        <td class="impress_infos_primary">
+                            Servidor:
+                            <span id="impress_name"> Yuri Gabriel da Silva Ferreira </span>
+                        </td>
+                        <td>
+                            Mês:
+                            <span id="impress_month"> Dezembro/2024 </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="impress_infos-primary">
+                            Cargo: <span id="impress_position"> Estagiário </span>
+                        </td>
+                        <td>Matrícula:
+                            <span id="matriculation"> 9999999/9 </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="impress_infos_primary">Local de Exercício: GETIC</td>
+                        <td>Carga Horária:
+                            <span id="impress_workload"> 4h </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="impress_secondary-table-container">
+            <table id="impress_secondary-table">
+                <thead>
+                    <tr>
+                        <th class="impress_cel-secondary-table" scope="col"></th>
+                        <th class="impress_cel-secondary-table" scope="col"></th>
+                        <th class="impress_cel-secondary-table" scope="col" colspan="2">Manhã</th>
+                        <th class="impress_cel-secondary-table" scope="col" colspan="2">Tarde</th>
+                        <th class="impress_cel-secondary-table" scope="col"></th>
+                        <th class="impress_cel-secondary-table" scope="col"></th>
+                    </tr>
+                    <tr>
+                        <td class="impress_cel-secondary-table -subcolumn -day" scope="row">
+                            Dia
+                        </td>
+                        <td class="impress_cel-secondary-table -subcolumn -rubric" scope="row">
+                            Rubrica do Servidor
+                        </td>
+                        <td class="impress_cel-secondary-table -subcolumn -entrytime" scope="row">
+                            Hora Entrada
+                        </td>
+                        <td class="impress_cel-secondary-table -subcolumn -exittime" scope="row">
+                            Hora Saída
+                        </td>
+                        <td class="impress_cel-secondary-table -subcolumn -entrytime" scope="row">
+                            Hora Entrada
+                        </td>
+                        <td class="impress_cel-secondary-table -subcolumn -exittime" scope="row">
+                            Hora Saída
+                        </td>
+                        <td class="impress_cel-secondary-table -subcolumn -occurrences" scope="row">
+                            Ocorrências
+                        </td>
+                        <td class="impress_cel-secondary-table -subcolumn -observations" scope="row">
+                            Observação
+                        </td>
+                    </tr>
+                </thead>
+            </table>
+            <footer id="impress_footer">
+                <div id="impress_date-container">
+                    Data: ___/___/_____
+                </div>
+                <div id="impress_signatures">
+                    <div class="impress_signature">
+                        <span>__________________________________</span>
+                        <p>Assinatura do Servidor</p>
+                    </div>
+                    <div class="impress_signature">
+                        <span>__________________________________</span>
+                        <p>Assinatura da Chefia Imediata</p>
+                    </div>
+                </div>
+                <p id="impress_address">
+                    Av. Conselheiro Furtado, 2520 - Cremação - CEP 66.040-100 - Belém/PA
+                </p>
+            </footer>
+            <div class="impress_button-container">
+                <button id="impress_btn-impress" onclick="makePDF()">Imprimir</button>
+            </div>
+        </div>
 </body>
+
 </html>
