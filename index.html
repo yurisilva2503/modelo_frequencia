@@ -12,7 +12,7 @@
 </head>
 
 <body>
-    <div class="index_wrapper">
+    <div id="index_wrapper">
         <form class="index_form" onsubmit="event.preventDefault();">
             <div class="index_title-container">
                 <h1 class="index_title">Folha de Frequência</h1>
@@ -281,7 +281,8 @@
                 </p>
             </footer>
             <div class="impress_button-container">
-                <button id="impress_btn-impress" onclick="makePDF()">Imprimir</button>
+                <button class="impress_btn" id="impress_btn-back" onclick="backToIndex()">Editar Dados</button>
+                <button class="impress_btn" id="impress_btn-impress" onclick="makePDF()">Imprimir</button>
             </div>
         </div>
 </body>

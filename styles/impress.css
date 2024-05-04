@@ -5,6 +5,7 @@
 }
 
 #impress_wrapper {
+  display: none;
   width: 50%;
   height: 95%;
   font-family: Arial;
@@ -27,6 +28,7 @@
 }
 
 .impress_main-logo {
+  filter: contrast(130%);
   width: 650px;
   height: 90px;
 }
@@ -68,15 +70,15 @@
   text-align: center;
   font-size: .85em;
   padding: 4px;
-  background-color: #a7a7a7;
+  background-color: #8c9aa8;
 }
 
 .impress_cel-secondary-table.-subcolumn.-day {
-  width: 5%;
+  width: 3%;
 }
 
 .impress_cel-secondary-table.-subcolumn.-rubric {
-  width: 15%;
+  width: 14%;
 }
 
 .impress_cel-secondary-table.-subcolumn.-entrytime {
@@ -88,11 +90,11 @@
 }
 
 .impress_cel-secondary-table.-subcolumn.-occurrences {
-  width: 6%;
+  width: 5%;
 }
 
 .impress_cel-secondary-table.-subcolumn.-observations {
-  width: 16%;
+  width: 20%;
 }
 
 #impress_secondary-table  > thead > tr > th:nth-child(1) {
@@ -162,30 +164,39 @@
 .impress_button-container{
   display: flex;
   justify-content: center;
+  gap: 8px;
   width: 100%;
   margin: 10px;
 }
 
-#impress_btn-impress {
+.impress_btn {
   font-size: 1em;
   font-weight: bold;
-  background-color: #0069bf ;
   color: #fff;
-  padding: 6px 10px;
+  width: 120px;
+  height: 30px;
   border: none;
   border-radius: 3px;
   cursor: pointer;
   transition: 0.2s all ease-in-out;
 }
 
-#impress_btn-impress:hover {
+.impress_btn:hover {
   filter: brightness(1.1);
   transform: scale(1.03);
 }
 
+#impress_btn-back{
+  background-color: #FF0F24;
+}
+
+#impress_btn-impress{
+  background-color: #0b6ebe;
+}
+
 .weekend {
   font-size: .85em;
-  background-color: #a7a7a7;
+  background-color: #8c9aa8;
 }
 
 @media print {

@@ -16,7 +16,7 @@ body {
   overflow-x: hidden;
 }
 
-.index_wrapper {
+#index_wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -28,6 +28,10 @@ body {
     overflow: auto;
     font-family: 'Poppins', Arial;
     font-weight: bold;
+    background-image: url('../assets/images/background.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .index_form {
@@ -127,6 +131,7 @@ body {
 }
 
 .index_main-logo{
-    width: 11%;
+    filter: grayscale(100%);
+    width: 12%;
     height: 10.5%;
 }

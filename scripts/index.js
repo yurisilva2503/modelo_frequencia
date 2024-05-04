@@ -3,6 +3,7 @@ const impress_primary_table = document.getElementById("impress_primary-table-con
 const impress_secundary_table = document.getElementById("impress_secondary-table-container").innerHTML;
 const impress_wrapper = document.getElementById("impress_wrapper");
 const impress_btn = document.getElementById("impress_btn-impress");
+const impress_btn_back = document.getElementById("impress_btn-back");
 const impress_date_container = document.getElementById("impress_date-container");
 const impress_signatures = document.getElementById("impress_signatures");
 const impress_address = document.getElementById("impress_address");
@@ -10,6 +11,7 @@ const currentYear = new Date().getFullYear();
 
 //Variáveis do Formulário
 const index_button_generate = document.getElementById("index_button-generate");
+const index_wrapper = document.getElementById("index_wrapper");
 
 //Máscara de matrícula
 document.getElementById("index_input-registration").addEventListener("input", function (event) {
@@ -129,13 +131,16 @@ index_button_generate.addEventListener("click", () => {
     user.month,
     user.workload
   );
+
+  index_wrapper.style.display = "none";
+  impress_wrapper.style.display = "block";
 });
 
 //Funcionalidade de preencher a tabela de frequência
 function fillMonthTable(primary_sector, secondary_sector, name, role, location, registration, month, workload) {
   const daysInMonth = new Date(currentYear, month, 0).getDate();
 
-  const dayOfWeekCellContent = (isSaturday, isSunday) => isSaturday ? "Sábado" : isSunday ? "Domingo" : "";
+  const dayOfWeekCellContent = (isSaturday, isSunday) => isSaturday ? "SÁBADO" : isSunday ? "DOMINGO" : "";
   const weekendClass = (isSaturday, isSunday) => isSaturday || isSunday ? "weekend" : "";
 
   document.getElementById("impress_secondary-table-tbody").innerHTML = '';
@@ -189,12 +194,26 @@ function fillMonthTable(primary_sector, secondary_sector, name, role, location, 
   document.getElementById("impress_workload").innerHTML = workload + "H";
 };
 
+function backToIndex() {
+  index_wrapper.style.display = "flex";
+  impress_wrapper.style.display = "none";
+  impress_btn.style.display = "block";
+  impress_wrapper.style.width = "50%";
+}
+
 //Funcionalidade de imprimir o PDF
 function makePDF() {
   impress_btn.style.display = "none";
+  impress_btn_back.style.display = "none";
   impress_wrapper.style.width = "93%";
+
   window.print();
 
+  impress_wrapper.style.display = "none";
+  index_wrapper.style.display = "flex";
   impress_btn.style.display = "block";
+  impress_btn_back.style.display = "block";
   impress_wrapper.style.width = "50%";
+
+  window.location.reload(true);
 };
