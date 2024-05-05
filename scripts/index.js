@@ -1,6 +1,4 @@
 //Variáveis da Impressão
-const impress_primary_table = document.getElementById("impress_primary-table-container").innerHTML;
-const impress_secundary_table = document.getElementById("impress_secondary-table-container").innerHTML;
 const impress_wrapper = document.getElementById("impress_wrapper");
 const impress_btn = document.getElementById("impress_btn-impress");
 const impress_btn_back = document.getElementById("impress_btn-back");
@@ -9,19 +7,7 @@ const impress_signatures = document.getElementById("impress_signatures");
 const impress_address = document.getElementById("impress_address");
 const currentYear = new Date().getFullYear();
 
-//Variáveis do Formulário
-const index_button_generate = document.getElementById("index_button-generate");
-const index_wrapper = document.getElementById("index_wrapper");
-
-//Máscara de matrícula
-document.getElementById("index_input-registration").addEventListener("input", function (event) {
-    let value = event.target.value;
-
-    value = value.replace(/\D/g, "");
-    value = value.replace(/(\d{7})(\d)/, "$1/$2");
-    event.target.value = value;
-  });
-
+//Listas
 const monthsofyear = [
   {
     id: 1,
@@ -72,20 +58,170 @@ const monthsofyear = [
     name: "Dezembro",
   },
 ];
+const sectors = [
+  {
+    id: "Almoxarifado",
+    name: "Almoxarifado",
+  },
+  {
+    id: "COESC",
+    name: "Coordenadoria de Serviços nas Unidades Escolares - COESC",
+  },
+  {
+    id: "COLOP",
+    name: "Coordenadoria de Logística e Patrimônio - COLOP",
+  },
+  {
+    id: "COEDS",
+    name: "Coordenadoria de Educação Superior - COEDS",
+  },
+  {
+    id: "CONFIN",
+    name: "Coordenadoria de Orçamento e Finanças - CONFIN",
+  },
+  {
+    id: "CGEPES",
+    name: "Coordenadoria de Gestão de Pessoas - CGEPES",
+  },
+  {
+    id: "GEPC",
+    name: "Gerência de Prestação de Contas - GEPC",
+  },
+  {
+    id: "COMSER",
+    name: "Coordenadoria de Compras e Serviços - COMSER",
+  },
+  {
+    id: "DAF",
+    name: "Diretoria de Administração e Finanças - DAF",
+  },
+  {
+    id: "Gerência Financeira (PRONATEC)",
+    name: "Gerência Financeira (PRONATEC)",
+  },
+  {
+    id: "GECONC",
+    name: "Gerência de Contratos e Convênio - GECONC",
+  },
+  {
+    id: "DCT",
+    name: "Diretoria de Ciência e tecnologia - DCT",
+  },
+  {
+    id: "NUPLAN",
+    name: "Núcleo de Planejamento - NUPLAN",
+  },
+  {
+    id: "CAEI",
+    name: "Coordenadoria de Apoio ao Empreendedorismo e a Inovação - CAEI",
+  },
+  {
+    id: "CCTI",
+    name: "Coordenadoria de Ciência e Tecnologia - CCTI",
+  },
+  {
+    id: "NUCI",
+    name: "Controle Interno - NUCI",
+  },
+  {
+    id: "Assessoria DCTV",
+    name: "Assessoria DCTV",
+  },
+  {
+    id: "GETIC",
+    name: "Gerência de Tecnologia da Informação e Comunicação - GETIC",
+  },
+  {
+    id: "CTDS",
+    name: "Coordenadoria de Tecnologia para o Desenvolvimento Social - CTDS",
+  },
+  {
+    id: "CETEC",
+    name: "Coordenadoria de Educação Técnica e Tecnológica - CETEC",
+  },
+  {
+    id: "EETEPAS",
+    name: "Setor Sociopsicopedagógico - EETEPAS",
+  },
+  {
+    id: "DETEC",
+    name: "Anexo-Diretoria de Educação Profissional e Tecnológica - DETEC",
+  },
+  {
+    id: "Assessoria DETEC",
+    name: "Assessoria DETEC",
+  },
+  {
+    id: "NUENG",
+    name: "Núcleo de Obras e Serviços de Engenharia - NUENG",
+  },
+  {
+    id: "COEAD",
+    name: "Coordenadoria de Educação à Distância - COEAD",
+  },
+  {
+    id: "COFIC",
+    name: "Coordenadoria de Formação Inicial e Continuada - COFIC",
+  },
+  {
+    id: "Sala da Diretoria",
+    name: "Sala da Diretoria",
+  },
+  {
+    id: "ASCOM",
+    name: "Assessoria de Comunicação - ASCOM",
+  },
+  {
+    id: "SECAD",
+    name: "Secretaria Adjunta - SECAD",
+  },
+  {
+    id: "NUCAD",
+    name: "Núcleo Consultivo da Administração Direta - NUCAD",
+  },
+  {
+    id: "Procurador do Estado",
+    name: "Procurador do Estado",
+  },
+  {
+    id: "Sala do Secretário",
+    name: "Sala do Secretário",
+  },
+  {
+    id: "Gabinete",
+    name: "Gabinete",
+  },
+];
 
-//Funcionalidade de verificar se os campos estão vazios
-function isEmptyOrNull(fields) {
-  return fields.some(
-    (value) =>
-      !value || value.trim() === "" || value.trim().toLowerCase() === "null"
-  );
-}
+//Variáveis do Formulário
+const index_input_name = document.getElementById("index_input-name");
+const index_input_role = document.getElementById("index_input-role");
+const index_input_registration = document.getElementById("index_input-registration");
+const index_button_generate = document.getElementById("index_button-generate");
+const index_wrapper = document.getElementById("index_wrapper");
 
-//Funcionalidade de verificar se os campos contém apenas letras
-function isValidString(string) {
-  const regex = /^[a-zA-ZÀ-ú\s]+$/;
-  return string.every((string) => regex.test(string));
-}
+//Máscara de string
+index_input_name.addEventListener("input", function (event) {
+    let value = event.target.value;
+    value = value.replace(/\d/g, "");
+    event.target.value = value;
+});
+
+//Máscara de string
+index_input_role.addEventListener("input", function (event) {
+  let value = event.target.value;
+  value = value.replace(/\d/g, "");
+  event.target.value = value;
+});
+
+//Máscara de matrícula
+index_input_registration.addEventListener("input", function (event) {
+  let value = event.target.value;
+
+  value = value.replace(/\D/g, "");
+  value = value.replace(/(\d{7})(\d)/, "$1/$2");
+  event.target.value = value;
+});
 
 //Funcionalidade de gerar o usuário
 index_button_generate.addEventListener("click", () => {
@@ -182,23 +318,56 @@ function fillMonthTable(primary_sector, secondary_sector, name, role, location, 
     impress_address.style.marginTop = "3%";
   }
 
-  let monthText = monthsofyear.filter((monthFilter) => monthFilter.id == month).map((monthValue) => monthValue.name);
+  const monthText = monthsofyear.filter((monthFilter) => monthFilter.id == month).map((monthValue) => monthValue.name);
+  const primary_sectorText = sectors.filter((sectorFilter) => sectorFilter.id == primary_sector).map((sectorValue) => sectorValue.name);
+  const secondary_sectorText = sectors.filter((sectorFilter) => sectorFilter.id == secondary_sector).map((sectorValue) => sectorValue.name);
 
-  document.getElementById("impress_primary-sector").innerHTML = primary_sector;
-  document.getElementById("impress_secondary-sector").innerHTML = secondary_sector;
+  console.log(primary_sectorText)
+  console.log(secondary_sectorText)
+
+  if(primary_sectorText.length == 1) {
+    document.getElementById("impress_primary-sector").style.display = "table-cell";
+    document.getElementById("impress_primary-sector").innerHTML = primary_sectorText[0];
+  } else {
+    document.getElementById("impress_primary-sector").style.display = "none";
+  }
+
+  if (secondary_sectorText.length == 1) {
+    document.getElementById("impress_secondary-sector").style.display =
+      "table-cell";
+    document.getElementById("impress_secondary-sector").innerHTML = secondary_sectorText[0];
+  } else {
+    document.getElementById("impress_secondary-sector").style.display = "none";
+  }
+
   document.getElementById("impress_name").innerHTML = name;
-  document.getElementById("impress_month").innerHTML = monthText[0] + " / 2024";
+  document.getElementById("impress_month").innerHTML = monthText[0] + "/2024";
   document.getElementById("impress_position").innerHTML = role;
   document.getElementById("impress_matriculation").innerHTML = registration;
   document.getElementById("impress_location").innerHTML = location;
   document.getElementById("impress_workload").innerHTML = workload + "H";
 };
 
+//Funcionalidade de voltar para o formulário
 function backToIndex() {
   index_wrapper.style.display = "flex";
   impress_wrapper.style.display = "none";
   impress_btn.style.display = "block";
   impress_wrapper.style.width = "50%";
+}
+
+//Funcionalidade de verificar se os campos estão vazios
+function isEmptyOrNull(fields) {
+  return fields.some(
+    (value) =>
+      !value || value.trim() === "" || value.trim().toLowerCase() === "null"
+  );
+}
+
+//Funcionalidade de verificar se os campos contém apenas letras
+function isValidString(string) {
+  const regex = /^[a-zA-ZÀ-ú\s]+$/;
+  return string.every((string) => regex.test(string));
 }
 
 //Funcionalidade de imprimir o PDF
