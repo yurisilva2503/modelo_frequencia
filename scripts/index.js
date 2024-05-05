@@ -277,6 +277,11 @@ index_button_generate.addEventListener("click", () => {
     return;
   }
 
+  if(fieldsToCheck[5].length <= 6 || fieldsToCheck[5].length >= 10) {
+    alert("O campo 'Matrícula' deve conter pelo menos 7 caracteres, apenas números, e no máximo 9 caracteres.");
+    return;
+  }
+
   const user = {
     primary_sector: fieldsToCheck[0],
     secondary_sector: fieldsToCheck[1],
