@@ -28,7 +28,7 @@ body {
     overflow: auto;
     font-family: 'Poppins', Arial;
     font-weight: bold;
-    background-image: url('../assets/images/background.jpg');
+    background-image: url('https://raw.githubusercontent.com/yurisilva2503/modelo_frequencia/main/assets/images/background.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
