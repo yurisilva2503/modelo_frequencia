@@ -8,6 +8,7 @@
     <link rel="icon" href="https://live.staticflickr.com/65535/53700261518_efa8e7cbea_o.png" type="image/png">
     <link rel="stylesheet" href="./styles/index.css">
     <link rel="stylesheet" href="./styles/impress.css">
+    <link rel="stylesheet" href="./styles/loader.css">
     <script src="./scripts/index.js" defer></script>
 </head>
 
@@ -136,8 +137,8 @@
                 </div>
                 <div class="index_input-control">
                     <label>Matrícula</label>
-                    <input type="text" maxlength="9" placeholder="Digite sua matrícula..."
-                        id="index_input-registration" required>
+                    <input type="text" maxlength="9" placeholder="Digite sua matrícula..." id="index_input-registration"
+                        required>
                 </div>
                 <div class="index_input-control">
                     <label>Mês</label>
@@ -171,7 +172,13 @@
                 <button id="index_button-generate">Gerar Frequência</button>
             </div>
         </form>
-        <img src="https://live.staticflickr.com/65535/53700047581_82d348d337_o.png" alt="Logo da SECTET" class="index_main-logo">
+        <img src="https://live.staticflickr.com/65535/53700047581_82d348d337_o.png" alt="Logo da SECTET"
+            class="index_main-logo">
+    </div>
+
+    <div class="wrapper-loader" id="wrapper-loader">
+        <div class="loader" id="loader">
+        </div>
     </div>
 
     <div id="impress_wrapper">
@@ -179,7 +186,8 @@
             <table id="impress_primary-table">
                 <thead>
                     <caption class="impress_primary-table-caption">
-                        <img src="https://live.staticflickr.com/65535/53700485935_3f17d2dc01_o.png" alt="Logo da SECTET" class="impress_main-logo" />
+                        <img src="https://live.staticflickr.com/65535/53700485935_3f17d2dc01_o.png" alt="Logo da SECTET"
+                            class="impress_main-logo" />
                     </caption>
                     <tr>
                         <th class="impress_sector" scope="col" colspan="2" id="impress_primary-sector">

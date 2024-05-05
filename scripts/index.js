@@ -2,12 +2,19 @@
 const impress_wrapper = document.getElementById("impress_wrapper");
 const impress_btn = document.getElementById("impress_btn-impress");
 const impress_btn_back = document.getElementById("impress_btn-back");
-const impress_date_container = document.getElementById(
-  "impress_date-container"
-);
+const impress_date_container = document.getElementById("impress_date-container");
 const impress_signatures = document.getElementById("impress_signatures");
 const impress_address = document.getElementById("impress_address");
 const currentYear = new Date().getFullYear();
+
+//Variáveis do Formulário
+const index_input_name = document.getElementById("index_input-name");
+const index_input_role = document.getElementById("index_input-role");
+const index_input_registration = document.getElementById(
+  "index_input-registration"
+);
+const index_button_generate = document.getElementById("index_button-generate");
+const index_wrapper = document.getElementById("index_wrapper");
 
 //Listas
 const monthsofyear = [
@@ -199,7 +206,6 @@ const sectors = [
 const holidays = [
   { day: 1, month: 1, holiday: "Confraternização Universal" },
   { day: 29, month: 3, holiday: "Paixão de Cristo (Sexta-feira Santa)" },
-  { day: 21, month: 4, holiday: "Tiradentes" },
   { day: 1, month: 5, holiday: "Dia Mundial do Trabalho" },
   { day: 7, month: 9, holiday: "Independência do Brasil" },
   { day: 1, month: 10, holiday: "Nossa Senhora Aparecida" },
@@ -221,15 +227,6 @@ const holidays = [
   { day: 15, month: 10, holiday: "Dia do Professor" },
   { day: 28, month: 10, holiday: "Dia do Servidor Público" }
 ];
-
-//Variáveis do Formulário
-const index_input_name = document.getElementById("index_input-name");
-const index_input_role = document.getElementById("index_input-role");
-const index_input_registration = document.getElementById(
-  "index_input-registration"
-);
-const index_button_generate = document.getElementById("index_button-generate");
-const index_wrapper = document.getElementById("index_wrapper");
 
 //Máscara de string
 index_input_name.addEventListener("input", function (event) {
@@ -277,7 +274,7 @@ index_button_generate.addEventListener("click", () => {
     return;
   }
 
-  if(fieldsToCheck[5].length <= 6 || fieldsToCheck[5].length >= 10) {
+  if (fieldsToCheck[5].length <= 6 || fieldsToCheck[5].length >= 10) {
     alert("O campo 'Matrícula' deve conter pelo menos 7 caracteres, apenas números, e no máximo 9 caracteres.");
     return;
   }
@@ -305,7 +302,13 @@ index_button_generate.addEventListener("click", () => {
   );
 
   index_wrapper.style.display = "none";
-  impress_wrapper.style.display = "block";
+  document.getElementById("wrapper-loader").style.display = "flex";
+  document.getElementById("loader").style.display = "block";
+  setTimeout(() => {
+    document.getElementById("wrapper-loader").style.display = "none";
+    document.getElementById("loader").style.display = "none";
+    impress_wrapper.style.display = "block";
+  }, 1000)
 });
 
 //Funcionalidade de preencher a tabela de frequência
@@ -328,10 +331,10 @@ function fillMonthTable(
     isHoliday
       ? "FERIADO NACIONAL"
       : isSaturday
-      ? "SÁBADO"
-      : isSunday
-      ? "DOMINGO"
-      : "";
+        ? "SÁBADO"
+        : isSunday
+          ? "DOMINGO"
+          : "";
 
   const weekendClass = (isSaturday, isSunday) =>
     isSaturday || isSunday ? "weekend" : "";
@@ -350,7 +353,7 @@ function fillMonthTable(
     if (cellContent == "FERIADO NACIONAL") {
       const row = `
       <tr class="holiday">
-        <td class="impress_cel-secondary-table -day ${cellClass}">${i}</td>
+        <td class="impress_cel-secondary-table -day">${i}</td>
         <td class="impress_cel-secondary-table -rubric" colspan="7">FERIADO - ${holidayName.toUpperCase()}</td>
       </tr>
     `;
@@ -430,10 +433,17 @@ function fillMonthTable(
 
 //Funcionalidade de voltar para o formulário
 function backToIndex() {
-  index_wrapper.style.display = "flex";
   impress_wrapper.style.display = "none";
-  impress_btn.style.display = "block";
-  impress_wrapper.style.width = "50%";
+  document.getElementById("wrapper-loader").style.display = "flex";
+  document.getElementById("loader").style.display = "block";
+  setTimeout(() => {
+    index_wrapper.style.display = "flex";
+    impress_btn.style.display = "block";
+    impress_wrapper.style.width = "50%";
+
+    document.getElementById("wrapper-loader").style.display = "none";
+    document.getElementById("loader").style.display = "none";
+  }, 800)
 }
 
 //Funcionalidade de verificar se os campos estão vazios
