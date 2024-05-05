@@ -18,7 +18,7 @@
   width: 100%;
 }
 
-#impress_primary-table{
+#impress_primary-table {
   border-collapse: collapse;
   width: 100%;
   font-weight: bold;
@@ -99,31 +99,31 @@
   width: 20%;
 }
 
-#impress_secondary-table  > thead > tr > th:nth-child(1) {
+#impress_secondary-table>thead>tr>th:nth-child(1) {
   width: 6.5%;
 }
 
-#impress_secondary-table  > thead > tr > th:nth-child(2) {
+#impress_secondary-table>thead>tr>th:nth-child(2) {
   width: 13.5%;
 }
 
-#impress_secondary-table  > thead > tr > th:nth-child(3) {
+#impress_secondary-table>thead>tr>th:nth-child(3) {
   width: 26.5%;
 }
 
-#impress_secondary-table  > thead > tr > th:nth-child(4) {
+#impress_secondary-table>thead>tr>th:nth-child(4) {
   width: 26.5%;
 }
 
-#impress_secondary-table  > thead > tr > th:nth-child(5) {
+#impress_secondary-table>thead>tr>th:nth-child(5) {
   width: 13.5%;
 }
 
-#impress_secondary-table  > thead > tr > th:nth-child(6) {
+#impress_secondary-table>thead>tr>th:nth-child(6) {
   width: 13.5%;
 }
 
-#impress_footer{
+#impress_footer {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -131,12 +131,12 @@
   height: 5%;
 }
 
-#impress_date-container{
+#impress_date-container {
   margin-top: 2%;
   font-weight: bold;
 }
 
-#impress_signatures{
+#impress_signatures {
   width: 100%;
   margin-top: 4%;
   font-weight: bold;
@@ -144,15 +144,16 @@
   justify-content: space-around;
 }
 
-.impress_signature{
+.impress_signature {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  gap: 4px;
   align-items: center;
   font-size: .9em;
 }
 
-#impress_address{
+#impress_address {
   margin-top: 3%;
   display: flex;
   justify-content: center;
@@ -163,7 +164,7 @@
 }
 
 
-.impress_button-container{
+.impress_button-container {
   display: flex;
   justify-content: center;
   gap: 8px;
@@ -189,11 +190,11 @@
   transform: scale(1.03);
 }
 
-#impress_btn-back{
+#impress_btn-back {
   background-color: #FF0F24;
 }
 
-#impress_btn-impress{
+#impress_btn-impress {
   background-color: #0b6ebe;
 }
 

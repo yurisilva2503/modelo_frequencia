@@ -2,7 +2,9 @@
 const impress_wrapper = document.getElementById("impress_wrapper");
 const impress_btn = document.getElementById("impress_btn-impress");
 const impress_btn_back = document.getElementById("impress_btn-back");
-const impress_date_container = document.getElementById("impress_date-container");
+const impress_date_container = document.getElementById(
+  "impress_date-container"
+);
 const impress_signatures = document.getElementById("impress_signatures");
 const impress_address = document.getElementById("impress_address");
 const currentYear = new Date().getFullYear();
@@ -196,15 +198,17 @@ const sectors = [
 //Variáveis do Formulário
 const index_input_name = document.getElementById("index_input-name");
 const index_input_role = document.getElementById("index_input-role");
-const index_input_registration = document.getElementById("index_input-registration");
+const index_input_registration = document.getElementById(
+  "index_input-registration"
+);
 const index_button_generate = document.getElementById("index_button-generate");
 const index_wrapper = document.getElementById("index_wrapper");
 
 //Máscara de string
 index_input_name.addEventListener("input", function (event) {
-    let value = event.target.value;
-    value = value.replace(/\d/g, "");
-    event.target.value = value;
+  let value = event.target.value;
+  value = value.replace(/\d/g, "");
+  event.target.value = value;
 });
 
 //Máscara de string
@@ -273,13 +277,24 @@ index_button_generate.addEventListener("click", () => {
 });
 
 //Funcionalidade de preencher a tabela de frequência
-function fillMonthTable(primary_sector, secondary_sector, name, role, location, registration, month, workload) {
+function fillMonthTable(
+  primary_sector,
+  secondary_sector,
+  name,
+  role,
+  location,
+  registration,
+  month,
+  workload
+) {
   const daysInMonth = new Date(currentYear, month, 0).getDate();
 
-  const dayOfWeekCellContent = (isSaturday, isSunday) => isSaturday ? "SÁBADO" : isSunday ? "DOMINGO" : "";
-  const weekendClass = (isSaturday, isSunday) => isSaturday || isSunday ? "weekend" : "";
+  const dayOfWeekCellContent = (isSaturday, isSunday) =>
+    isSaturday ? "SÁBADO" : isSunday ? "DOMINGO" : "";
+  const weekendClass = (isSaturday, isSunday) =>
+    isSaturday || isSunday ? "weekend" : "";
 
-  document.getElementById("impress_secondary-table-tbody").innerHTML = '';
+  document.getElementById("impress_secondary-table-tbody").innerHTML = "";
   for (let i = 1; i <= daysInMonth; i++) {
     const currentDate = new Date(currentYear, month - 1, i);
     const isSaturday = currentDate.getDay() === 6;
@@ -318,16 +333,21 @@ function fillMonthTable(primary_sector, secondary_sector, name, role, location, 
     impress_address.style.marginTop = "3%";
   }
 
-  const monthText = monthsofyear.filter((monthFilter) => monthFilter.id == month).map((monthValue) => monthValue.name);
-  const primary_sectorText = sectors.filter((sectorFilter) => sectorFilter.id == primary_sector).map((sectorValue) => sectorValue.name);
-  const secondary_sectorText = sectors.filter((sectorFilter) => sectorFilter.id == secondary_sector).map((sectorValue) => sectorValue.name);
+  const monthText = monthsofyear
+    .filter((monthFilter) => monthFilter.id == month)
+    .map((monthValue) => monthValue.name);
+  const primary_sectorText = sectors
+    .filter((sectorFilter) => sectorFilter.id == primary_sector)
+    .map((sectorValue) => sectorValue.name);
+  const secondary_sectorText = sectors
+    .filter((sectorFilter) => sectorFilter.id == secondary_sector)
+    .map((sectorValue) => sectorValue.name);
 
-  console.log(primary_sectorText)
-  console.log(secondary_sectorText)
-
-  if(primary_sectorText.length == 1) {
-    document.getElementById("impress_primary-sector").style.display = "table-cell";
-    document.getElementById("impress_primary-sector").innerHTML = primary_sectorText[0];
+  if (primary_sectorText.length == 1) {
+    document.getElementById("impress_primary-sector").style.display =
+      "table-cell";
+    document.getElementById("impress_primary-sector").innerHTML =
+      primary_sectorText[0];
   } else {
     document.getElementById("impress_primary-sector").style.display = "none";
   }
@@ -335,18 +355,21 @@ function fillMonthTable(primary_sector, secondary_sector, name, role, location, 
   if (secondary_sectorText.length == 1) {
     document.getElementById("impress_secondary-sector").style.display =
       "table-cell";
-    document.getElementById("impress_secondary-sector").innerHTML = secondary_sectorText[0];
+    document.getElementById("impress_secondary-sector").innerHTML =
+      secondary_sectorText[0];
   } else {
     document.getElementById("impress_secondary-sector").style.display = "none";
   }
 
-  document.getElementById("impress_name").innerHTML = name;
-  document.getElementById("impress_month").innerHTML = monthText[0] + "/2024";
-  document.getElementById("impress_position").innerHTML = role;
+  document.getElementById("impress_name").innerHTML = name.toUpperCase();
+  document.getElementById("impress_month").innerHTML =
+    monthText[0].toUpperCase() + "/" + currentYear;
+  document.getElementById("impress_position").innerHTML = role.toUpperCase();
   document.getElementById("impress_matriculation").innerHTML = registration;
-  document.getElementById("impress_location").innerHTML = location;
-  document.getElementById("impress_workload").innerHTML = workload + "H";
-};
+  document.getElementById("impress_location").innerHTML =
+    location.toUpperCase();
+  document.getElementById("impress_workload").innerHTML = workload;
+}
 
 //Funcionalidade de voltar para o formulário
 function backToIndex() {
@@ -385,4 +408,4 @@ function makePDF() {
   impress_wrapper.style.width = "50%";
 
   window.location.reload(true);
-};
+}
