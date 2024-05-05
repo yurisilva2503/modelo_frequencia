@@ -58,7 +58,7 @@ const monthsofyear = [
   {
     id: 12,
     name: "Dezembro",
-  },
+  }
 ];
 
 const sectors = [
@@ -193,7 +193,7 @@ const sectors = [
   {
     id: "Gabinete",
     name: "Gabinete",
-  },
+  }
 ];
 
 const holidays = [
@@ -219,7 +219,7 @@ const holidays = [
   { day: 14, month: 2, holiday: "Quarta-feira de Cinzas" },
   { day: 30, month: 5, holiday: "Corpus Christi" },
   { day: 15, month: 10, holiday: "Dia do Professor" },
-  { day: 28, month: 10, holiday: "Dia do Servidor Público" },
+  { day: 28, month: 10, holiday: "Dia do Servidor Público" }
 ];
 
 //Variáveis do Formulário
@@ -337,6 +337,8 @@ function fillMonthTable(
     const isSaturday = currentDate.getDay() === 6;
     const isSunday = currentDate.getDay() === 0;
     const holiday = isHoliday(i, month);
+    const holidayInfo = holidays.find(holiday => holiday.day == i && holiday.month == month);
+    const holidayName = holidayInfo ? holidayInfo.holiday : '';
     const cellContent = dayOfWeekCellContent(isSaturday, isSunday, holiday);
     const cellClass = weekendClass(isSaturday, isSunday);
 
@@ -344,7 +346,7 @@ function fillMonthTable(
       const row = `
       <tr class="holiday">
         <td class="impress_cel-secondary-table -day ${cellClass}">${i}</td>
-        <td class="impress_cel-secondary-table -rubric" colspan="7">${cellContent}</td>
+        <td class="impress_cel-secondary-table -rubric" colspan="7">FERIADO - ${holidayName.toUpperCase()}</td>
       </tr>
     `;
       document
