@@ -60,6 +60,7 @@ const monthsofyear = [
     name: "Dezembro",
   },
 ];
+
 const sectors = [
   {
     id: "Almoxarifado",
@@ -195,6 +196,32 @@ const sectors = [
   },
 ];
 
+const holidays = [
+  { day: 1, month: 1, holiday: "Confraternização Universal" },
+  { day: 29, month: 3, holiday: "Paixão de Cristo (Sexta-feira Santa)" },
+  { day: 21, month: 4, holiday: "Tiradentes" },
+  { day: 1, month: 5, holiday: "Dia Mundial do Trabalho" },
+  { day: 7, month: 9, holiday: "Independência do Brasil" },
+  { day: 1, month: 10, holiday: "Nossa Senhora Aparecida" },
+  { day: 2, month: 11, holiday: "Finados" },
+  { day: 15, month: 11, holiday: "Proclamação" },
+  { day: 25, month: 12, holiday: "Natal" },
+  { day: 15, month: 8, holiday: "Adesão do Pará à Independência da República" },
+  {
+    day: 8,
+    month: 12,
+    holiday: "Dia de Nossa Senhora da Conceição (ponto facultativo)",
+  },
+  { day: 12, month: 1, holiday: "Aniversário de Belém (ponto facultativo)" },
+  { day: 13, month: 10, holiday: "Círio de Nazaré (ponto facultativo)" },
+  { day: 12, month: 2, holiday: "Carnaval" },
+  { day: 13, month: 2, holiday: "Carnaval" },
+  { day: 14, month: 2, holiday: "Quarta-feira de Cinzas" },
+  { day: 30, month: 5, holiday: "Corpus Christi" },
+  { day: 15, month: 10, holiday: "Dia do Professor" },
+  { day: 28, month: 10, holiday: "Dia do Servidor Público" },
+];
+
 //Variáveis do Formulário
 const index_input_name = document.getElementById("index_input-name");
 const index_input_role = document.getElementById("index_input-role");
@@ -289,8 +316,18 @@ function fillMonthTable(
 ) {
   const daysInMonth = new Date(currentYear, month, 0).getDate();
 
-  const dayOfWeekCellContent = (isSaturday, isSunday) =>
-    isSaturday ? "SÁBADO" : isSunday ? "DOMINGO" : "";
+  const isHoliday = (day, month) =>
+    holidays.some((holiday) => holiday.day == day && holiday.month == month);
+
+  const dayOfWeekCellContent = (isSaturday, isSunday, isHoliday) =>
+    isHoliday
+      ? "FERIADO NACIONAL"
+      : isSaturday
+      ? "SÁBADO"
+      : isSunday
+      ? "DOMINGO"
+      : "";
+
   const weekendClass = (isSaturday, isSunday) =>
     isSaturday || isSunday ? "weekend" : "";
 
@@ -299,10 +336,22 @@ function fillMonthTable(
     const currentDate = new Date(currentYear, month - 1, i);
     const isSaturday = currentDate.getDay() === 6;
     const isSunday = currentDate.getDay() === 0;
-    const cellContent = dayOfWeekCellContent(isSaturday, isSunday);
+    const holiday = isHoliday(i, month);
+    const cellContent = dayOfWeekCellContent(isSaturday, isSunday, holiday);
     const cellClass = weekendClass(isSaturday, isSunday);
 
-    const row = `
+    if (cellContent == "FERIADO NACIONAL") {
+      const row = `
+      <tr class="holiday">
+        <td class="impress_cel-secondary-table -day ${cellClass}">${i}</td>
+        <td class="impress_cel-secondary-table -rubric" colspan="7">${cellContent}</td>
+      </tr>
+    `;
+      document
+        .getElementById("impress_secondary-table-tbody")
+        .insertAdjacentHTML("beforeend", row);
+    } else {
+      const row = `
       <tr>
         <td class="impress_cel-secondary-table -day ${cellClass}">${i}</td>
         <td class="impress_cel-secondary-table -rubric ${cellClass}">${cellContent}</td>
@@ -314,9 +363,10 @@ function fillMonthTable(
         <td class="impress_cel-secondary-table -observations ${cellClass}">${cellContent}</td>
       </tr>
     `;
-    document
-      .getElementById("impress_secondary-table-tbody")
-      .insertAdjacentHTML("beforeend", row);
+      document
+        .getElementById("impress_secondary-table-tbody")
+        .insertAdjacentHTML("beforeend", row);
+    }
   }
 
   if (daysInMonth < 30) {

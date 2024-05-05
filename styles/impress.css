@@ -203,6 +203,11 @@
   background-color: #8c9aa8;
 }
 
+.holiday{
+  font-size: .85em;
+  background-color: #8c9aa8;
+}
+
 @media print {
   @page {
     margin: 0;
