@@ -123,6 +123,8 @@ body {
     border-radius: 3px;
     cursor: pointer;
     transition: 0.2s all ease-in-out;
+    font-family: 'Poppins', Arial;
+    font-weight: 600;
 }
 
 .index_button-container>button:hover {
@@ -133,5 +135,5 @@ body {
 .index_main-logo{
     filter: grayscale(100%);
     width: 12%;
-    height: 10.5%;
+    height: 11%;
 }
