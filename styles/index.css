@@ -134,28 +134,6 @@ select:focus {
     transform: scale(1.03);
 }
 
-.index_warning-container {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 8px;
-    gap: 5px;
-}
-
-.index_warning{
-    font-weight: 500;
-    font-size: .8em;
-}
-
-.index_red-span{
-    color: #ff3636;
-}
-
-.index_blue-span{
-    color: #005ac0;
-}
-
 .index_main-logo {
     filter: grayscale(100%);
     width: 12.5%;
