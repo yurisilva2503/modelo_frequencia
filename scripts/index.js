@@ -10,9 +10,7 @@ const currentYear = new Date().getFullYear();
 //Variáveis do Formulário
 const index_input_name = document.getElementById("index_input-name");
 const index_input_role = document.getElementById("index_input-role");
-const index_input_registration = document.getElementById(
-  "index_input-registration"
-);
+const index_input_registration = document.getElementById("index_input-registration");
 const index_button_generate = document.getElementById("index_button-generate");
 const index_wrapper = document.getElementById("index_wrapper");
 
@@ -209,15 +207,20 @@ const holidays = [
   { day: 1, month: 5, holiday: "Dia Mundial do Trabalho" },
   { day: 1, month: 10, holiday: "Nossa Senhora Aparecida" },
   { day: 15, month: 11, holiday: "Proclamação da República" },
+  { day: 20, month: 11, holiday: "Dia Nacional de Zumbi e da Consciência Negra" },
   { day: 25, month: 12, holiday: "Natal" },
-  { day: 15, month: 8, holiday: "Adesão do Pará à Independência da República" },
-  { day: 12, month: 1, holiday: "Aniversário de Belém (ponto facultativo)" },
+  { day: 24, month: 12, holiday: "Véspera de Natal" },
+  { day: 31, month: 12, holiday: "Véspera de Ano Novo" },
+  { day: 15, month: 8, holiday: "Adesão do Pará à Independência do Brasil" },
+  { day: 16, month: 8, holiday: "Ponto Facultativo" },
+  { day: 12, month: 1, holiday: "Aniversário de Belém" },
   { day: 12, month: 2, holiday: "Carnaval" },
   { day: 13, month: 2, holiday: "Carnaval" },
-  { day: 14, month: 2, holiday: "Quarta-feira de Cinzas" },
+  { day: 14, month: 2, holiday: "Quarta-feira de Cinzas (Ponto Facultativo até 12h)" },
   { day: 30, month: 5, holiday: "Corpus Christi" },
-  { day: 15, month: 10, holiday: "Dia do Professor" },
-  { day: 28, month: 10, holiday: "Dia do Servidor Público" }
+  { day: 31, month: 5, holiday: "Ponto Facultativo" },
+  { day: 14, month: 10, holiday: "Pós Círio" },
+  { day: 28, month: 10, holiday: "Dia do Servidor Público / Recírio" }
 ];
 
 //Máscara de string
@@ -231,15 +234,6 @@ index_input_name.addEventListener("input", function (event) {
 index_input_role.addEventListener("input", function (event) {
   let value = event.target.value;
   value = value.replace(/\d/g, "");
-  event.target.value = value;
-});
-
-//Máscara de matrícula
-index_input_registration.addEventListener("input", function (event) {
-  let value = event.target.value;
-
-  value = value.replace(/\D/g, "");
-  value = value.replace(/(\d{7})(\d)/, "$1/$2");
   event.target.value = value;
 });
 
@@ -261,12 +255,7 @@ index_button_generate.addEventListener("click", () => {
     return;
   }
 
-  if (!isValidString(fieldsToCheck.slice(2, 4))) {
-    alert("Os campos 'Nome' e 'Cargo' devem conter apenas letras e caracteres especiais como: ' , ', ' . ' e ' / '");
-    return;
-  }
-
-  if (fieldsToCheck[5].length <= 6 || fieldsToCheck[5].length >= 10) {
+  if (fieldsToCheck[5].length <= 6 || fieldsToCheck[5].length >= 11) {
     alert("O campo 'Matrícula' deve conter pelo menos 7 caracteres, apenas números, e no máximo 9 caracteres.");
     return;
   }
@@ -444,12 +433,6 @@ function isEmptyOrNull(fields) {
     (value) =>
       !value || value.trim() === "" || value.trim().toLowerCase() === "null"
   );
-}
-
-//Funcionalidade de verificar se os campos contém apenas letras
-function isValidString(string) {
-  const regex = /^[a-zA-ZÀ-ú\s.,\/]+$/;
-  return string.every((string) => regex.test(string));
 }
 
 //Funcionalidade de imprimir o PDF
