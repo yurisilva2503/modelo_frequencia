@@ -262,7 +262,7 @@ index_button_generate.addEventListener("click", () => {
   }
 
   if (!isValidString(fieldsToCheck.slice(2, 4))) {
-    alert("Os campos 'Nome' e 'Cargo' devem conter apenas letras.");
+    alert("Os campos 'Nome' e 'Cargo' devem conter apenas letras e caracteres especiais como: ' , ', ' . ' e ' / '");
     return;
   }
 
@@ -448,7 +448,7 @@ function isEmptyOrNull(fields) {
 
 //Funcionalidade de verificar se os campos contém apenas letras
 function isValidString(string) {
-  const regex = /^[a-zA-ZÀ-ú\s]+$/;
+  const regex = /^[a-zA-ZÀ-ú\s.,\/]+$/;
   return string.every((string) => regex.test(string));
 }
 
