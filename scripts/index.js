@@ -256,7 +256,7 @@ index_button_generate.addEventListener("click", () => {
   }
 
   if (fieldsToCheck[5].length <= 6 || fieldsToCheck[5].length >= 11) {
-    alert("O campo 'Matrícula' deve conter pelo menos 7 caracteres, apenas números, e no máximo 9 caracteres.");
+    alert("O campo 'Matrícula' deve conter pelo menos 7 caracteres, apenas números, e no máximo 10 caracteres.");
     return;
   }
 
