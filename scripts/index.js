@@ -32,7 +32,6 @@ const index_wrapper = document.getElementById("index_wrapper")
 const wrapper_loader = document.getElementById("wrapper-loader")
 const loader = document.getElementById("loader")
 
-//Listas
 const monthsofyear = [
   {
     id: 1,
@@ -90,52 +89,16 @@ const sectors = [
     name: "Almoxarifado",
   },
   {
-    id: "COESC",
-    name: "Coordenadoria de Serviços nas Unidades Escolares - COESC",
+    id: "ASCOM",
+    name: "Assessoria de Comunicação - ASCOM",
   },
   {
-    id: "COLOP",
-    name: "Coordenadoria de Logística e Patrimônio - COLOP",
+    id: "Assessoria DCTV",
+    name: "Assessoria DCTV",
   },
   {
-    id: "COEDS",
-    name: "Coordenadoria de Educação Superior - COEDS",
-  },
-  {
-    id: "CONFIN",
-    name: "Coordenadoria de Orçamento e Finanças - CONFIN",
-  },
-  {
-    id: "CGEPES",
-    name: "Coordenadoria de Gestão de Pessoas - CGEPES",
-  },
-  {
-    id: "GEPC",
-    name: "Gerência de Prestação de Contas - GEPC",
-  },
-  {
-    id: "COMSER",
-    name: "Coordenadoria de Compras e Serviços - COMSER",
-  },
-  {
-    id: "DAF",
-    name: "Diretoria de Administração e Finanças - DAF",
-  },
-  {
-    id: "Gerência Financeira (PRONATEC)",
-    name: "Gerência Financeira (PRONATEC)",
-  },
-  {
-    id: "GECONC",
-    name: "Gerência de Contratos e Convênio - GECONC",
-  },
-  {
-    id: "DCT",
-    name: "Diretoria de Ciência e tecnologia - DCT",
-  },
-  {
-    id: "NUPLAN",
-    name: "Núcleo de Planejamento - NUPLAN",
+    id: "Assessoria DETEC",
+    name: "Assessoria DETEC",
   },
   {
     id: "CAEI",
@@ -146,100 +109,189 @@ const sectors = [
     name: "Coordenadoria de Ciência e Tecnologia - CCTI",
   },
   {
-    id: "NUCI",
-    name: "Controle Interno - NUCI",
-  },
-  {
-    id: "Assessoria DCTV",
-    name: "Assessoria DCTV",
-  },
-  {
-    id: "GETIC",
-    name: "Gerência de Tecnologia da Informação e Comunicação - GETIC",
-  },
-  {
-    id: "CTDS",
-    name: "Coordenadoria de Tecnologia para o Desenvolvimento Social - CTDS",
-  },
-  {
-    id: "CETEC",
-    name: "Coordenadoria de Educação Técnica e Tecnológica - CETEC",
-  },
-  {
-    id: "EETEPAS",
-    name: "Setor Sociopsicopedagógico - EETEPAS",
-  },
-  {
-    id: "DETEC",
-    name: "Anexo-Diretoria de Educação Profissional e Tecnológica - DETEC",
-  },
-  {
-    id: "Assessoria DETEC",
-    name: "Assessoria DETEC",
-  },
-  {
-    id: "NUENG",
-    name: "Núcleo de Obras e Serviços de Engenharia - NUENG",
-  },
-  {
     id: "COEAD",
     name: "Coordenadoria de Educação à Distância - COEAD",
+  },
+  {
+    id: "COEDS",
+    name: "Coordenadoria de Educação Superior - COEDS",
+  },
+  {
+    id: "COESC",
+    name: "Coordenadoria de Serviços nas Unidades Escolares - COESC",
   },
   {
     id: "COFIC",
     name: "Coordenadoria de Formação Inicial e Continuada - COFIC",
   },
   {
-    id: "Sala da Diretoria",
-    name: "Sala da Diretoria",
+    id: "COLOP",
+    name: "Coordenadoria de Logística e Patrimônio - COLOP",
   },
   {
-    id: "ASCOM",
-    name: "Assessoria de Comunicação - ASCOM",
+    id: "COMSER",
+    name: "Coordenadoria de Compras e Serviços - COMSER",
   },
   {
-    id: "SECAD",
-    name: "Secretaria Adjunta - SECAD",
+    id: "CONFIN",
+    name: "Coordenadoria de Orçamento e Finanças - CONFIN",
+  },
+  {
+    id: "CETEC",
+    name: "Coordenadoria de Educação Técnica e Tecnológica - CETEC",
+  },
+  {
+    id: "CGEPES",
+    name: "Coordenadoria de Gestão de Pessoas - CGEPES",
+  },
+  {
+    id: "CTDS",
+    name: "Coordenadoria de Tecnologia para o Desenvolvimento Social - CTDS",
+  },
+  {
+    id: "DAF",
+    name: "Diretoria de Administração e Finanças - DAF",
+  },
+  {
+    id: "DCT",
+    name: "Diretoria de Ciência e tecnologia - DCT",
+  },
+  {
+    id: "DETEC",
+    name: "Anexo-Diretoria de Educação Profissional e Tecnológica - DETEC",
+  },
+  {
+    id: "EETEPAS",
+    name: "Setor Sociopsicopedagógico - EETEPAS",
+  },
+  {
+    id: "GECONC",
+    name: "Gerência de Contratos e Convênio - GECONC",
+  },
+  {
+    id: "GEPC",
+    name: "Gerência de Prestação de Contas - GEPC",
+  },
+  {
+    id: "GETIC",
+    name: "Gerência de Tecnologia da Informação e Comunicação - GETIC",
+  },
+  {
+    id: "Gerência Financeira (PRONATEC)",
+    name: "Gerência Financeira (PRONATEC)",
+  },
+  {
+    id: "Gabinete",
+    name: "Gabinete",
   },
   {
     id: "NUCAD",
     name: "Núcleo Consultivo da Administração Direta - NUCAD",
   },
   {
+    id: "NUENG",
+    name: "Núcleo de Obras e Serviços de Engenharia - NUENG",
+  },
+  {
+    id: "NUPLAN",
+    name: "Núcleo de Planejamento - NUPLAN",
+  },
+  {
+    id: "NUCI",
+    name: "Controle Interno - NUCI",
+  },
+  {
     id: "Procurador do Estado",
     name: "Procurador do Estado",
+  },
+  {
+    id: "SECAD",
+    name: "Secretaria Adjunta - SECAD",
+  },
+  {
+    id: "Sala da Diretoria",
+    name: "Sala da Diretoria",
   },
   {
     id: "Sala do Secretário",
     name: "Sala do Secretário",
   },
-  {
-    id: "Gabinete",
-    name: "Gabinete",
-  }
 ]
 
 const holidays = [
   { day: 1, month: 1, holiday: "Confraternização Universal" },
-  { day: 29, month: 3, holiday: "Paixão de Cristo (Sexta-feira Santa)" },
-  { day: 1, month: 5, holiday: "Dia Mundial do Trabalho" },
-  { day: 1, month: 10, holiday: "Nossa Senhora Aparecida" },
-  { day: 15, month: 11, holiday: "Proclamação da República" },
-  { day: 20, month: 11, holiday: "Dia Nacional de Zumbi e da Consciência Negra" },
-  { day: 25, month: 12, holiday: "Natal" },
-  { day: 24, month: 12, holiday: "Véspera de Natal" },
-  { day: 31, month: 12, holiday: "Véspera de Ano Novo" },
-  { day: 15, month: 8, holiday: "Adesão do Pará à Independência do Brasil" },
-  { day: 16, month: 8, holiday: "Ponto Facultativo" },
   { day: 12, month: 1, holiday: "Aniversário de Belém" },
   { day: 12, month: 2, holiday: "Carnaval" },
   { day: 13, month: 2, holiday: "Carnaval" },
   { day: 14, month: 2, holiday: "Quarta-feira de Cinzas (Ponto Facultativo até 12h)" },
+  { day: 29, month: 3, holiday: "Paixão de Cristo (Sexta-feira Santa)" },
+  { day: 1, month: 5, holiday: "Dia Mundial do Trabalho" },
   { day: 30, month: 5, holiday: "Corpus Christi" },
   { day: 31, month: 5, holiday: "Ponto Facultativo" },
+  { day: 15, month: 8, holiday: "Adesão do Pará à Independência do Brasil" },
+  { day: 16, month: 8, holiday: "Ponto Facultativo" },
   { day: 14, month: 10, holiday: "Pós Círio" },
-  { day: 28, month: 10, holiday: "Dia do Servidor Público / Recírio" }
+  { day: 1, month: 10, holiday: "Nossa Senhora Aparecida" },
+  { day: 28, month: 10, holiday: "Dia do Servidor Público / Recírio" },
+  { day: 15, month: 11, holiday: "Proclamação da República" },
+  { day: 20, month: 11, holiday: "Dia Nacional de Zumbi e da Consciência Negra" },
+  { day: 24, month: 12, holiday: "Véspera de Natal" },
+  { day: 25, month: 12, holiday: "Natal" },
+  { day: 31, month: 12, holiday: "Véspera de Ano Novo" },
 ]
+
+const workloads = [
+  {
+    id: "4H",
+    name: "4H"
+  },
+  {
+    id: "6H",
+    name: "6H"
+  },
+  {
+    id: "6H",
+    name: "6H"
+  }
+]
+
+const handleGetSectors = () => {
+  sectors.forEach((sector) => {
+    const row = `
+      <option value='${sector.id}'>${sector.id}</option>
+    `
+    index_select_sector_primary.innerHTML += row
+    index_select_sector_secondary.innerHTML += row
+    index_select_location.innerHTML += row
+  })
+}
+
+const handleGetMonthsOfYear = () => {
+  monthsofyear.forEach(month => {
+    const row = `
+      <option value='${month.id}'>${month.name}</option>
+    `
+    index_select_month.innerHTML += row
+  })
+}
+
+const handleGetWorkloads = () => {
+  workloads.forEach(workload => {
+    const row = `
+      <option value='${workload.id}'>${workload.name}</option>
+    `
+    index_select_workload.innerHTML += row
+  })
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  stringReplace(index_input_name)
+  stringReplace(index_input_role)
+  numberReplace(index_input_registration)
+  handleGetSectors()
+  handleGetMonthsOfYear()
+  handleGetWorkloads()
+})
 
 function stringReplace(str){
   str.addEventListener("input", function (event) {
@@ -251,52 +303,48 @@ function stringReplace(str){
 
 function numberReplace(num) {
   num.addEventListener("input", function (event) {
-    let value = event.target.value;
-    value = value.replace(/[^0-9\/?]/g, "");
-    event.target.value = value;
-  });
+    let value = event.target.value
+    value = value.replace(/[^0-9\/?]/g, "")
+    event.target.value = value
+  })
 }
 
 function isEmptyOrNull(fields) {
   return fields.some(
     (value) =>
       !value || value.trim() === "" || value.trim().toLowerCase() === "null"
-  );
+  )
 }
 
 function backToIndex() {
-  impress_wrapper.style.display = "none";
-  wrapper_loader.style.display = "flex";
-  loader.style.display = "block";
+  impress_wrapper.style.display = "none"
+  wrapper_loader.style.display = "flex"
+  loader.style.display = "block"
   setTimeout(() => {
-    index_wrapper.style.display = "flex";
-    impress_btn.style.display = "block";
-    impress_wrapper.style.width = "50%";
+    index_wrapper.style.display = "flex"
+    impress_btn.style.display = "block"
+    impress_wrapper.style.width = "50%"
 
-    wrapper_loader.style.display = "none";
-    loader.style.display = "none";
+    wrapper_loader.style.display = "none"
+    loader.style.display = "none"
   }, 800)
 }
 
 function makePDF() {
-  impress_btn.style.display = "none";
-  impress_btn_back.style.display = "none";
-  impress_wrapper.style.width = "93%";
+  impress_btn.style.display = "none"
+  impress_btn_back.style.display = "none"
+  impress_wrapper.style.width = "93%"
 
-  window.print();
+  window.print()
 
-  impress_wrapper.style.display = "none";
-  index_wrapper.style.display = "flex";
-  impress_btn.style.display = "block";
-  impress_btn_back.style.display = "block";
-  impress_wrapper.style.width = "50%";
+  impress_wrapper.style.display = "none"
+  index_wrapper.style.display = "flex"
+  impress_btn.style.display = "block"
+  impress_btn_back.style.display = "block"
+  impress_wrapper.style.width = "50%"
 
-  window.location.reload(true);
+  window.location.reload(true)
 }
-
-stringReplace(index_input_name)
-stringReplace(index_input_role)
-numberReplace(index_input_registration)
 
 function generateUser() {
   const user = {
@@ -318,7 +366,7 @@ function generateUser() {
   }
 
   if(user.registration.length <= 6 || user.registration.length >= 11){
-    alert("O campo de matrícula deve ter no mínimo 7 e no máximo 10 caracteres.");
+    alert("O campo de matrícula deve ter no mínimo 7 e no máximo 10 caracteres.")
     return
   }
 
@@ -394,10 +442,10 @@ function fillMonthTable(user) {
     impress_address.style.marginTop = "3%"
   }
 
+  const primary_sectorText = sectors.find((sectorFilter) => sectorFilter.id == user.primary_sector);
+  const secondary_sectorText = sectors.find((sectorFilter) => sectorFilter.id == user.secondary_sector);
   const monthText = monthsofyear.find((monthFilter) => monthFilter.id == user.month)
-  const primary_sectorText = sectors.find((sectorFilter) => sectorFilter.id == user.primary_sector)
-  const secondary_sectorText = sectors.find((sectorFilter) => sectorFilter.id == user.secondary_sector)
-
+  
   if (secondary_sectorText) {
     impress_secondary_sector.style.display = "table-cell"
     impress_secondary_sector.innerHTML = secondary_sectorText.name
