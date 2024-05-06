@@ -1,18 +1,36 @@
 //Variáveis da Impressão
-const impress_wrapper = document.getElementById("impress_wrapper");
-const impress_btn = document.getElementById("impress_btn-impress");
-const impress_btn_back = document.getElementById("impress_btn-back");
-const impress_date_container = document.getElementById("impress_date-container");
-const impress_signatures = document.getElementById("impress_signatures");
-const impress_address = document.getElementById("impress_address");
-const currentYear = new Date().getFullYear();
+const impress_wrapper = document.getElementById("impress_wrapper")
+const impress_secondary_table_tbody = document.getElementById("impress_secondary-table-tbody")
+const impress_btn = document.getElementById("impress_btn-impress")
+const impress_btn_back = document.getElementById("impress_btn-back")
+const impress_primary_sector = document.getElementById("impress_primary-sector")
+const impress_secondary_sector = document.getElementById("impress_secondary-sector")
+const impress_name = document.getElementById("impress_name")
+const impress_month = document.getElementById("impress_month")
+const impress_position = document.getElementById("impress_position")
+const impress_matriculation = document.getElementById("impress_matriculation")
+const impress_location = document.getElementById("impress_location")
+const impress_workload = document.getElementById("impress_workload")
+const impress_date_container = document.getElementById("impress_date-container")
+const impress_signatures = document.getElementById("impress_signatures")
+const impress_address = document.getElementById("impress_address")
+const currentYear = new Date().getFullYear()
 
 //Variáveis do Formulário
-const index_input_name = document.getElementById("index_input-name");
-const index_input_role = document.getElementById("index_input-role");
-const index_input_registration = document.getElementById("index_input-registration");
-const index_button_generate = document.getElementById("index_button-generate");
-const index_wrapper = document.getElementById("index_wrapper");
+const index_select_sector_primary = document.getElementById("index_select-sector-primary")
+const index_select_sector_secondary = document.getElementById("index_select-sector-secondary")
+const index_input_name = document.getElementById("index_input-name")
+const index_input_role = document.getElementById("index_input-role")
+const index_select_location = document.getElementById("index_select-location")
+const index_input_registration = document.getElementById("index_input-registration")
+const index_select_month = document.getElementById("index_select-month")
+const index_select_workload = document.getElementById("index_select-workload")
+const index_button_generate = document.getElementById("index_button-generate")
+const index_wrapper = document.getElementById("index_wrapper")
+
+//Variáveis do loading
+const wrapper_loader = document.getElementById("wrapper-loader")
+const loader = document.getElementById("loader")
 
 //Listas
 const monthsofyear = [
@@ -64,7 +82,7 @@ const monthsofyear = [
     id: 12,
     name: "Dezembro",
   }
-];
+]
 
 const sectors = [
   {
@@ -199,7 +217,7 @@ const sectors = [
     id: "Gabinete",
     name: "Gabinete",
   }
-];
+]
 
 const holidays = [
   { day: 1, month: 1, holiday: "Confraternização Universal" },
@@ -221,213 +239,24 @@ const holidays = [
   { day: 31, month: 5, holiday: "Ponto Facultativo" },
   { day: 14, month: 10, holiday: "Pós Círio" },
   { day: 28, month: 10, holiday: "Dia do Servidor Público / Recírio" }
-];
+]
 
-//Máscara de string
-index_input_name.addEventListener("input", function (event) {
-  let value = event.target.value;
-  value = value.replace(/\d/g, "");
-  event.target.value = value;
-});
-
-//Máscara de string
-index_input_role.addEventListener("input", function (event) {
-  let value = event.target.value;
-  value = value.replace(/\d/g, "");
-  event.target.value = value;
-});
-
-//Funcionalidade de gerar o usuário
-index_button_generate.addEventListener("click", () => {
-  const fieldsToCheck = [
-    document.getElementById("index_select-sector-primary").value,
-    document.getElementById("index_select-sector-secondary").value,
-    document.getElementById("index_input-name").value,
-    document.getElementById("index_input-role").value,
-    document.getElementById("index_select-location").value,
-    document.getElementById("index_input-registration").value,
-    document.getElementById("index_select-month").value,
-    document.getElementById("index_select-workload").value,
-  ];
-
-  if (isEmptyOrNull(fieldsToCheck)) {
-    alert("Por favor, preencha todos os campos antes de continuar.");
-    return;
-  }
-
-  if (fieldsToCheck[5].length <= 6 || fieldsToCheck[5].length >= 11) {
-    alert("O campo 'Matrícula' deve conter pelo menos 7 caracteres, apenas números, e no máximo 10 caracteres.");
-    return;
-  }
-
-  const user = {
-    primary_sector: fieldsToCheck[0],
-    secondary_sector: fieldsToCheck[1],
-    name: fieldsToCheck[2],
-    role: fieldsToCheck[3],
-    location: fieldsToCheck[4],
-    registration: fieldsToCheck[5],
-    month: fieldsToCheck[6],
-    workload: fieldsToCheck[7],
-  };
-
-  fillMonthTable(
-    user.primary_sector,
-    user.secondary_sector,
-    user.name,
-    user.role,
-    user.location,
-    user.registration,
-    user.month,
-    user.workload
-  );
-
-  index_wrapper.style.display = "none";
-  document.getElementById("wrapper-loader").style.display = "flex";
-  document.getElementById("loader").style.display = "block";
-  setTimeout(() => {
-    document.getElementById("wrapper-loader").style.display = "none";
-    document.getElementById("loader").style.display = "none";
-    impress_wrapper.style.display = "block";
-  }, 1000)
-});
-
-//Funcionalidade de preencher a tabela de frequência
-function fillMonthTable(
-  primary_sector,
-  secondary_sector,
-  name,
-  role,
-  location,
-  registration,
-  month,
-  workload
-) {
-  const daysInMonth = new Date(currentYear, month, 0).getDate();
-
-  const isHoliday = (day, month) =>
-    holidays.some((holiday) => holiday.day == day && holiday.month == month);
-
-  const dayOfWeekCellContent = (isSaturday, isSunday, isHoliday) =>
-    isHoliday
-      ? "FERIADO NACIONAL"
-      : isSaturday
-        ? "SÁBADO"
-        : isSunday
-          ? "DOMINGO"
-          : "";
-
-  const weekendClass = (isSaturday, isSunday) =>
-    isSaturday || isSunday ? "weekend" : "";
-
-  document.getElementById("impress_secondary-table-tbody").innerHTML = "";
-  for (let i = 1; i <= daysInMonth; i++) {
-    const currentDate = new Date(currentYear, month - 1, i);
-    const isSaturday = currentDate.getDay() === 6;
-    const isSunday = currentDate.getDay() === 0;
-    const holiday = isHoliday(i, month);
-    const holidayInfo = holidays.find(holiday => holiday.day == i && holiday.month == month);
-    const holidayName = holidayInfo ? holidayInfo.holiday : '';
-    const cellContent = dayOfWeekCellContent(isSaturday, isSunday, holiday);
-    const cellClass = weekendClass(isSaturday, isSunday);
-
-    if (cellContent == "FERIADO NACIONAL") {
-      const row = `
-      <tr class="holiday">
-        <td class="impress_cel-secondary-table -day">${i}</td>
-        <td class="impress_cel-secondary-table -rubric" colspan="7">FERIADO - ${holidayName.toUpperCase()}</td>
-      </tr>
-    `;
-      document
-        .getElementById("impress_secondary-table-tbody")
-        .insertAdjacentHTML("beforeend", row);
-    } else {
-      const row = `
-      <tr>
-        <td class="impress_cel-secondary-table -day ${cellClass}">${i}</td>
-        <td class="impress_cel-secondary-table -rubric ${cellClass}">${cellContent}</td>
-        <td class="impress_cel-secondary-table -entrytime ${cellClass}">${cellContent}</td>
-        <td class="impress_cel-secondary-table -exittime ${cellClass}">${cellContent}</td>
-        <td class="impress_cel-secondary-table -entrytime ${cellClass}">${cellContent}</td>
-        <td class="impress_cel-secondary-table -exittime ${cellClass}">${cellContent}</td>
-        <td class="impress_cel-secondary-table -occurrences ${cellClass}">${cellContent}</td>
-        <td class="impress_cel-secondary-table -observations ${cellClass}">${cellContent}</td>
-      </tr>
-    `;
-      document
-        .getElementById("impress_secondary-table-tbody")
-        .insertAdjacentHTML("beforeend", row);
-    }
-  }
-
-  if (daysInMonth < 30) {
-    impress_date_container.style.marginTop = "2%";
-    impress_signatures.style.marginTop = "4%";
-    impress_address.style.marginTop = "6.5%";
-  } else if (daysInMonth == 30) {
-    impress_date_container.style.marginTop = "2%";
-    impress_signatures.style.marginTop = "3%";
-    impress_address.style.marginTop = "4%";
-  } else {
-    impress_date_container.style.marginTop = "2%";
-    impress_signatures.style.marginTop = "2%";
-    impress_address.style.marginTop = "3%";
-  }
-
-  const monthText = monthsofyear
-    .filter((monthFilter) => monthFilter.id == month)
-    .map((monthValue) => monthValue.name);
-  const primary_sectorText = sectors
-    .filter((sectorFilter) => sectorFilter.id == primary_sector)
-    .map((sectorValue) => sectorValue.name);
-  const secondary_sectorText = sectors
-    .filter((sectorFilter) => sectorFilter.id == secondary_sector)
-    .map((sectorValue) => sectorValue.name);
-
-  if (primary_sectorText.length == 1) {
-    document.getElementById("impress_primary-sector").style.display =
-      "table-cell";
-    document.getElementById("impress_primary-sector").innerHTML =
-      primary_sectorText[0];
-  } else {
-    document.getElementById("impress_primary-sector").style.display = "none";
-  }
-
-  if (secondary_sectorText.length == 1) {
-    document.getElementById("impress_secondary-sector").style.display =
-      "table-cell";
-    document.getElementById("impress_secondary-sector").innerHTML =
-      secondary_sectorText[0];
-  } else {
-    document.getElementById("impress_secondary-sector").style.display = "none";
-  }
-
-  document.getElementById("impress_name").innerHTML = name.toUpperCase();
-  document.getElementById("impress_month").innerHTML =
-    monthText[0].toUpperCase() + "/" + currentYear;
-  document.getElementById("impress_position").innerHTML = role.toUpperCase();
-  document.getElementById("impress_matriculation").innerHTML = registration;
-  document.getElementById("impress_location").innerHTML =
-    location.toUpperCase();
-  document.getElementById("impress_workload").innerHTML = workload;
+function stringReplace(str){
+  str.addEventListener("input", function (event) {
+    let value = event.target.value
+    value = value.replace(/\d/g, "")
+    event.target.value = value
+  })
 }
 
-//Funcionalidade de voltar para o formulário
-function backToIndex() {
-  impress_wrapper.style.display = "none";
-  document.getElementById("wrapper-loader").style.display = "flex";
-  document.getElementById("loader").style.display = "block";
-  setTimeout(() => {
-    index_wrapper.style.display = "flex";
-    impress_btn.style.display = "block";
-    impress_wrapper.style.width = "50%";
-
-    document.getElementById("wrapper-loader").style.display = "none";
-    document.getElementById("loader").style.display = "none";
-  }, 800)
+function numberReplace(num) {
+  num.addEventListener("input", function (event) {
+    let value = event.target.value;
+    value = value.replace(/[^0-9\/?]/g, "");
+    event.target.value = value;
+  });
 }
 
-//Funcionalidade de verificar se os campos estão vazios
 function isEmptyOrNull(fields) {
   return fields.some(
     (value) =>
@@ -435,7 +264,20 @@ function isEmptyOrNull(fields) {
   );
 }
 
-//Funcionalidade de imprimir o PDF
+function backToIndex() {
+  impress_wrapper.style.display = "none";
+  wrapper_loader.style.display = "flex";
+  loader.style.display = "block";
+  setTimeout(() => {
+    index_wrapper.style.display = "flex";
+    impress_btn.style.display = "block";
+    impress_wrapper.style.width = "50%";
+
+    wrapper_loader.style.display = "none";
+    loader.style.display = "none";
+  }, 800)
+}
+
 function makePDF() {
   impress_btn.style.display = "none";
   impress_btn_back.style.display = "none";
@@ -450,4 +292,124 @@ function makePDF() {
   impress_wrapper.style.width = "50%";
 
   window.location.reload(true);
+}
+
+stringReplace(index_input_name)
+stringReplace(index_input_role)
+numberReplace(index_input_registration)
+
+function generateUser() {
+  const user = {
+    primary_sector: index_select_sector_primary.value,
+    secondary_sector: index_select_sector_secondary.value,
+    name: index_input_name.value,
+    role: index_input_role.value,
+    location: index_select_location.value,
+    registration: index_input_registration.value,
+    month: index_select_month.value,
+    workload: index_select_workload.value,
+  }
+
+  const fieldsToCheck = Object.values(user)
+
+  if (isEmptyOrNull(fieldsToCheck)) {
+    alert("Por favor, preencha todos os campos antes de continuar.")
+    return
+  }
+
+  if(user.registration.length <= 6 || user.registration.length >= 11){
+    alert("O campo de matrícula deve ter no mínimo 7 e no máximo 10 caracteres.");
+    return
+  }
+
+  fillMonthTable(user)
+
+  index_wrapper.style.display = "none"
+  wrapper_loader.style.display = "flex"
+  loader.style.display = "block"
+  setTimeout(() => {
+    wrapper_loader.style.display = "none"
+    loader.style.display = "none"
+    impress_wrapper.style.display = "block"
+  }, 1000)
+}
+
+function fillMonthTable(user) {
+  const daysInMonth = new Date(currentYear, user.month, 0).getDate()
+  const isHoliday = (day, month) => holidays.some((holiday) => holiday.day == day && holiday.month == month)
+  const dayOfWeekCellContent = (isSaturday, isSunday, isHoliday) =>
+      isHoliday ? "FERIADO NACIONAL" : 
+      isSaturday ? "SÁBADO" : 
+      isSunday ? "DOMINGO" : 
+      ""
+  const weekendClass = (isSaturday, isSunday) => isSaturday || isSunday ? "weekend" : ""
+
+  impress_secondary_table_tbody.innerHTML = ""
+  for (let i = 1; i <= daysInMonth; i++) {
+    const currentDate = new Date(currentYear, user.month - 1, i)
+    const isSaturday = currentDate.getDay() === 6
+    const isSunday = currentDate.getDay() === 0
+    const holiday = isHoliday(i, user.month)
+    const holidayInfo = holidays.find(holiday => holiday.day == i && holiday.month == user.month)
+    const holidayName = holidayInfo ? holidayInfo.holiday : ''
+    const cellContent = dayOfWeekCellContent(isSaturday, isSunday, holiday)
+    const cellClass = weekendClass(isSaturday, isSunday)
+
+    if (cellContent == "FERIADO NACIONAL") {
+      const row = `
+      <tr class="holiday">
+        <td class="impress_cel-secondary-table -day">${i}</td>
+        <td class="impress_cel-secondary-table -rubric" colspan="7">FERIADO - ${holidayName.toUpperCase()}</td>
+      </tr>
+    `
+      impress_secondary_table_tbody.insertAdjacentHTML("beforeend", row)
+    } else {
+      const row = `
+      <tr>
+        <td class="impress_cel-secondary-table -day ${cellClass}">${i}</td>
+        <td class="impress_cel-secondary-table -rubric ${cellClass}">${cellContent}</td>
+        <td class="impress_cel-secondary-table -entrytime ${cellClass}">${cellContent}</td>
+        <td class="impress_cel-secondary-table -exittime ${cellClass}">${cellContent}</td>
+        <td class="impress_cel-secondary-table -entrytime ${cellClass}">${cellContent}</td>
+        <td class="impress_cel-secondary-table -exittime ${cellClass}">${cellContent}</td>
+        <td class="impress_cel-secondary-table -occurrences ${cellClass}">${cellContent}</td>
+        <td class="impress_cel-secondary-table -observations ${cellClass}">${cellContent}</td>
+      </tr>
+    `
+      impress_secondary_table_tbody.insertAdjacentHTML("beforeend", row)
+    }
+  }
+
+  if (daysInMonth < 30) {
+    impress_date_container.style.marginTop = "2%"
+    impress_signatures.style.marginTop = "4%"
+    impress_address.style.marginTop = "6.5%"
+  } else if (daysInMonth == 30) {
+    impress_date_container.style.marginTop = "2%"
+    impress_signatures.style.marginTop = "3%"
+    impress_address.style.marginTop = "4%"
+  } else {
+    impress_date_container.style.marginTop = "2%"
+    impress_signatures.style.marginTop = "2%"
+    impress_address.style.marginTop = "3%"
+  }
+
+  const monthText = monthsofyear.find((monthFilter) => monthFilter.id == user.month)
+  const primary_sectorText = sectors.find((sectorFilter) => sectorFilter.id == user.primary_sector)
+  const secondary_sectorText = sectors.find((sectorFilter) => sectorFilter.id == user.secondary_sector)
+
+  if (secondary_sectorText) {
+    impress_secondary_sector.style.display = "table-cell"
+    impress_secondary_sector.innerHTML = secondary_sectorText.name
+  } else {
+    impress_secondary_sector.style.display = "none"
+  }
+
+  impress_primary_sector.innerHTML = primary_sectorText.name
+  impress_name.innerHTML = user.name.toUpperCase()
+  impress_month.innerHTML = monthText.name.toUpperCase() + "/" + currentYear
+  impress_position.innerHTML = user.role.toUpperCase()
+  impress_matriculation.innerHTML = user.registration
+  impress_location.innerHTML = user.location.toUpperCase()
+  impress_workload.innerHTML = user.workload
 }
