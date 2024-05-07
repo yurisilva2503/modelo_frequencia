@@ -7,8 +7,8 @@ const impress_primary_sector = document.getElementById("impress_primary-sector")
 const impress_secondary_sector = document.getElementById("impress_secondary-sector")
 const impress_name = document.getElementById("impress_name")
 const impress_month = document.getElementById("impress_month")
-const impress_position = document.getElementById("impress_position")
-const impress_matriculation = document.getElementById("impress_matriculation")
+const impress_role= document.getElementById("impress_role")
+const impress_registration = document.getElementById("impress_registration")
 const impress_location = document.getElementById("impress_location")
 const impress_workload = document.getElementById("impress_workload")
 const impress_date_container = document.getElementById("impress_date-container")
@@ -249,8 +249,8 @@ const workloads = [
     name: "6H"
   },
   {
-    id: "6H",
-    name: "6H"
+    id: "8H",
+    name: "8H"
   }
 ]
 
@@ -455,8 +455,8 @@ function fillMonthTable(user) {
   impress_primary_sector.innerHTML = primary_sectorText.name
   impress_name.innerHTML = user.name.toUpperCase()
   impress_month.innerHTML = monthText.name.toUpperCase() + "/" + currentYear
-  impress_position.innerHTML = user.role.toUpperCase()
-  impress_matriculation.innerHTML = user.registration
+  impress_role.innerHTML = user.role.toUpperCase()
+  impress_registration.innerHTML = user.registration
   impress_location.innerHTML = user.location.toUpperCase()
   impress_workload.innerHTML = user.workload
 }
