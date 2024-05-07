@@ -28,7 +28,7 @@ const index_select_workload = document.getElementById("index_select-workload")
 const index_button_generate = document.getElementById("index_button-generate")
 const index_wrapper = document.getElementById("index_wrapper")
 
-//Variáveis do loading
+//Variáveis do Loading
 const wrapper_loader = document.getElementById("wrapper-loader")
 const loader = document.getElementById("loader")
 
@@ -219,25 +219,24 @@ const sectors = [
 ]
 
 const holidays = [
-  { day: 1, month: 1, holiday: "Confraternização Universal" },
-  { day: 12, month: 1, holiday: "Aniversário de Belém" },
-  { day: 12, month: 2, holiday: "Carnaval" },
-  { day: 13, month: 2, holiday: "Carnaval" },
-  { day: 14, month: 2, holiday: "Quarta-feira de Cinzas (Ponto Facultativo até 12h)" },
-  { day: 29, month: 3, holiday: "Paixão de Cristo (Sexta-feira Santa)" },
-  { day: 1, month: 5, holiday: "Dia Mundial do Trabalho" },
-  { day: 30, month: 5, holiday: "Corpus Christi" },
+  { day: 1, month: 1, holiday: "Feriado Nacional - Confraternização Universal" },
+  { day: 12, month: 1, holiday: "Feriado Municipal - Aniversário de Belém" },
+  { day: 12, month: 2, holiday: "Ponto Facultativo - Carnaval" },
+  { day: 13, month: 2, holiday: "Ponto Facultativo - Carnaval" },
+  { day: 14, month: 2, holiday: "Ponto Facultativo - Quarta-feira de Cinzas" },
+  { day: 29, month: 3, holiday: "Feriado Nacional - Paixão de Cristo (Sexta-feira Santa)" },
+  { day: 1, month: 5, holiday: "Feriado Nacional - Dia Mundial do Trabalho" },
+  { day: 30, month: 5, holiday: "Feriado Nacional - Corpus Christi" },
   { day: 31, month: 5, holiday: "Ponto Facultativo" },
-  { day: 15, month: 8, holiday: "Adesão do Pará à Independência do Brasil" },
+  { day: 15, month: 8, holiday: "Feriado Estadual - Adesão do Pará à Independência do Brasil" },
   { day: 16, month: 8, holiday: "Ponto Facultativo" },
-  { day: 14, month: 10, holiday: "Pós Círio" },
-  { day: 1, month: 10, holiday: "Nossa Senhora Aparecida" },
-  { day: 28, month: 10, holiday: "Dia do Servidor Público / Recírio" },
-  { day: 15, month: 11, holiday: "Proclamação da República" },
-  { day: 20, month: 11, holiday: "Dia Nacional de Zumbi e da Consciência Negra" },
-  { day: 24, month: 12, holiday: "Véspera de Natal" },
-  { day: 25, month: 12, holiday: "Natal" },
-  { day: 31, month: 12, holiday: "Véspera de Ano Novo" },
+  { day: 14, month: 10, holiday: "Feriado Municipal - Pós Círio" },
+  { day: 28, month: 10, holiday: "Feriado Nacional - Dia do Servidor Público / Feriado Municipal - Recírio" },
+  { day: 15, month: 11, holiday: "Feriado Nacional - Proclamação da República" },
+  { day: 20, month: 11, holiday: "Feriado Nacional - Dia Nacional de Zumbi e da Consciência Negra" },
+  { day: 24, month: 12, holiday: "Ponto Facultativo - Véspera de Natal" },
+  { day: 25, month: 12, holiday: "Feriado Nacional - Natal" },
+  { day: 31, month: 12, holiday: "Ponto Facultativo - Véspera de Ano Novo" },
 ]
 
 const workloads = [
@@ -407,7 +406,7 @@ function fillMonthTable(user) {
       const row = `
       <tr class="holiday">
         <td class="impress_cel-secondary-table -day">${i}</td>
-        <td class="impress_cel-secondary-table -rubric" colspan="7">FERIADO - ${holidayName.toUpperCase()}</td>
+        <td class="impress_cel-secondary-table -rubric" colspan="7">${holidayName.toUpperCase()}</td>
       </tr>
     `
       impress_secondary_table_tbody.insertAdjacentHTML("beforeend", row)
