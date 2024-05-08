@@ -92,9 +92,9 @@ const directorates = [
 ]
 
 const sectors = [
-    { id: "ASCOM", name: "Assessoria de Comunicação" },
-    { id: "ASDETEC", name: "Assessoria da Diretoria de Educação Profissional e Tecnológica" },
-    { id: "ASGAB", name: "Assessoria de Gabinete" },
+    { id: "ASCOM", name: "Assessoria de Comunicação - ASCOM" },
+    { id: "ASDETEC", name: "Assessoria da Diretoria de Educação Profissional e Tecnológica - ASDETEC" },
+    { id: "ASGAB", name: "Assessoria de Gabinete - ASGAB" },
     { id: "CAEI", name: "Coordenadoria de Apoio ao Empreendedorismo e à Inovação - CAEI" },
     { id: "CCT", name: "Coordenadoria de Ciência e Tecnologia - CCTI" },
     { id: "CETEC", name: "Coordenadoria de Edicação Técnica e Tecnológica - CETEC" },
