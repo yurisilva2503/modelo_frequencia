@@ -7,7 +7,7 @@ const impress_primary_sector = document.getElementById("impress_primary-sector")
 const impress_secondary_sector = document.getElementById("impress_secondary-sector")
 const impress_name = document.getElementById("impress_name")
 const impress_month = document.getElementById("impress_month")
-const impress_role= document.getElementById("impress_role")
+const impress_role = document.getElementById("impress_role")
 const impress_registration = document.getElementById("impress_registration")
 const impress_location = document.getElementById("impress_location")
 const impress_workload = document.getElementById("impress_workload")
@@ -154,8 +154,8 @@ const holidays = [
   { day: 31, month: 5, holiday: "Ponto Facultativo", morningLimit: false },
   { day: 15, month: 8, holiday: "Feriado Estadual - Adesão do Pará à Independência do Brasil", morningLimit: false },
   { day: 16, month: 8, holiday: "Ponto Facultativo", morningLimit: false },
-  { day: 14, month: 10, holiday: "Feriado Municipal - Pós Círio", morningLimit: false },
-  { day: 28, month: 10, holiday: "Feriado Nacional - Dia do Servidor Público / Feriado Municipal - Recírio", morningLimit: false },
+  { day: 14, month: 10, holiday: "Ponto Facultativo - Pós Círio", morningLimit: false },
+  { day: 28, month: 10, holiday: "Feriado Nacional - Dia do Servidor Público / Ponto Facultativo - Recírio", morningLimit: false },
   { day: 15, month: 11, holiday: "Feriado Nacional - Proclamação da República", morningLimit: false },
   { day: 20, month: 11, holiday: "Feriado Nacional - Dia Nacional de Zumbi e da Consciência Negra", morningLimit: false },
   { day: 24, month: 12, holiday: "Ponto Facultativo - Véspera de Natal", morningLimit: false },
