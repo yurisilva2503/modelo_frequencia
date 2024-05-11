@@ -27,7 +27,7 @@ body {
     overflow: auto;
     font-family: 'Poppins', Arial;
     font-weight: bold;
-    background-image: url('https://live.staticflickr.com/65535/53699154477_0c5ba0fab9_o.jpg');
+    background-image: url('../assets/images/background.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
