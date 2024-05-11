@@ -1,0 +1,51 @@
+@media screen and (min-width: 1360px) and (max-width: 1366px) {
+  .index_title {
+    font-size: 2.3em;
+  }
+
+  .index_subtitle {
+    font-size: 0.8em;
+  }
+
+  .index_input-container {
+    padding: 5px;
+    gap: 3px;
+  }
+
+  .index_input-control > label {
+    font-size: 1em;
+  }
+
+  .index_input-control > input {
+    font-size: 0.9em;
+    padding: 4px;
+    height: 30px;
+  }
+
+  .index_input-control > select {
+    font-size: 0.9em;
+    padding: 0px;
+    height: 30px;
+  }
+
+  .index_button-container {
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+
+  .index_button-container > button {
+    font-size: 1em;
+    width: 200px;
+    height: 30px;
+  }
+
+  .index_warning-container {
+    align-items: center;
+    font-size: 0.7em;
+  }
+
+  .index_warning-logo {
+    width: 15px;
+    height: 15px;
+  }
+}

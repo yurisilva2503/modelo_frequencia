@@ -58,7 +58,7 @@
   border-collapse: collapse;
   width: 100%;
   font-weight: bold;
-  font-size: 0.9em;
+  font-size: 0.85em;
 }
 
 .impress_cel-secondary-table {
@@ -66,7 +66,6 @@
   padding: 2px;
   border: 2px solid #000;
 }
-
 
 .impress_cel-secondary-table.-subcolumn {
   text-align: center;
@@ -199,13 +198,19 @@
 }
 
 .weekend {
-  font-size: .85em;
   background-color: #8c9aa8;
 }
 
+.weekend.-weekendText{
+  font-size: .8em;
+}
+
 .holiday {
-  font-size: .85em;
   background-color: #8c9aa8;
+}
+
+.holiday.-holidayText{
+  font-size: .8em;
 }
 
 @media print {

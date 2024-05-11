@@ -25,6 +25,7 @@ const index_select_location = document.getElementById("index_select-location")
 const index_input_registration = document.getElementById("index_input-registration")
 const index_select_month = document.getElementById("index_select-month")
 const index_select_workload = document.getElementById("index_select-workload")
+const index_input_email = document.getElementById("index_input-email")
 const index_button_generate = document.getElementById("index_button-generate")
 const index_wrapper = document.getElementById("index_wrapper")
 
@@ -87,7 +88,7 @@ const directorates = [
   { id: "DAF", name: "Diretoria de Administração e Finanças - DAF" },
   { id: "DCT", name: "Diretoria de Ciência e Tecnologia - DCT" },
   { id: "DETEC", name: "Anexo-Diretoria de Educação Profissional e Tecnológica - DETEC" },
-  { id: "Gabinete", name: "Gabinete" },
+  { id: "GABINETE", name: "Gabinete" },
   { id: "SECAD", name: "Secretaria Adjunta - SECAD" }
 ]
 
@@ -140,27 +141,26 @@ const sectors = [
     { id: "PROTOCOLO", name: "Protocolo Geral - PROTO" }
 ]
 
-const concatenated_DirectoratesSectors = sectors.slice(0, 22).concat(directorates.slice(0)).concat(sectors.slice(22))
+let concatenated_DirectoratesSectors = sectors.slice(0, 19).concat(directorates.slice(0, 4)).concat(sectors.slice(19)).concat(directorates.slice(4,5))
 
 const holidays = [
-  { day: 1, month: 1, holiday: "Feriado Nacional - Confraternização Universal" },
-  { day: 12, month: 1, holiday: "Feriado Municipal - Aniversário de Belém" },
-  { day: 12, month: 2, holiday: "Ponto Facultativo - Carnaval" },
-  { day: 13, month: 2, holiday: "Ponto Facultativo - Carnaval" },
-  { day: 14, month: 2, holiday: "Ponto Facultativo - Quarta-feira de Cinzas" },
-  { day: 29, month: 3, holiday: "Feriado Nacional - Paixão de Cristo (Sexta-feira Santa)" },
-  { day: 1, month: 5, holiday: "Feriado Nacional - Dia Mundial do Trabalho" },
-  { day: 30, month: 5, holiday: "Feriado Nacional - Corpus Christi" },
-  { day: 31, month: 5, holiday: "Ponto Facultativo" },
-  { day: 15, month: 8, holiday: "Feriado Estadual - Adesão do Pará à Independência do Brasil" },
-  { day: 16, month: 8, holiday: "Ponto Facultativo" },
-  { day: 14, month: 10, holiday: "Feriado Municipal - Pós Círio" },
-  { day: 28, month: 10, holiday: "Feriado Nacional - Dia do Servidor Público / Feriado Municipal - Recírio" },
-  { day: 15, month: 11, holiday: "Feriado Nacional - Proclamação da República" },
-  { day: 20, month: 11, holiday: "Feriado Nacional - Dia Nacional de Zumbi e da Consciência Negra" },
-  { day: 24, month: 12, holiday: "Ponto Facultativo - Véspera de Natal" },
-  { day: 25, month: 12, holiday: "Feriado Nacional - Natal" },
-  { day: 31, month: 12, holiday: "Ponto Facultativo - Véspera de Ano Novo" }
+  { day: 1, month: 1, holiday: "Feriado Nacional - Confraternização Universal", morningLimit: false },
+  { day: 12, month: 2, holiday: "Ponto Facultativo", morningLimit: false },
+  { day: 13, month: 2, holiday: "Ponto Facultativo - Carnaval", morningLimit: false },
+  { day: 14, month: 2, holiday: "Ponto Facultativo - Quarta-feira de Cinzas (Até 12h)", morningLimit: true },
+  { day: 29, month: 3, holiday: "Feriado Nacional - Paixão de Cristo (Sexta-feira Santa)", morningLimit: false },
+  { day: 1, month: 5, holiday: "Feriado Nacional - Dia Mundial do Trabalho", morningLimit: false },
+  { day: 30, month: 5, holiday: "Feriado Nacional - Corpus Christi", morningLimit: false },
+  { day: 31, month: 5, holiday: "Ponto Facultativo", morningLimit: false },
+  { day: 15, month: 8, holiday: "Feriado Estadual - Adesão do Pará à Independência do Brasil", morningLimit: false },
+  { day: 16, month: 8, holiday: "Ponto Facultativo", morningLimit: false },
+  { day: 14, month: 10, holiday: "Feriado Municipal - Pós Círio", morningLimit: false },
+  { day: 28, month: 10, holiday: "Feriado Nacional - Dia do Servidor Público / Feriado Municipal - Recírio", morningLimit: false },
+  { day: 15, month: 11, holiday: "Feriado Nacional - Proclamação da República", morningLimit: false },
+  { day: 20, month: 11, holiday: "Feriado Nacional - Dia Nacional de Zumbi e da Consciência Negra", morningLimit: false },
+  { day: 24, month: 12, holiday: "Ponto Facultativo - Véspera de Natal", morningLimit: false },
+  { day: 25, month: 12, holiday: "Feriado Nacional - Natal", morningLimit: false },
+  { day: 31, month: 12, holiday: "Ponto Facultativo - Véspera de Ano Novo", morningLimit: false }
 ]
 
 const workloads = [
@@ -261,34 +261,13 @@ function isEmptyOrNull(fields) {
   )
 }
 
-function backToIndex() {
-  impress_wrapper.style.display = "none"
-  wrapper_loader.style.display = "flex"
-  loader.style.display = "block"
-  setTimeout(() => {
-    index_wrapper.style.display = "flex"
-    impress_btn.style.display = "block"
-    impress_wrapper.style.width = "50%"
-
-    wrapper_loader.style.display = "none"
-    loader.style.display = "none"
-  }, 800)
-}
-
-function makePDF() {
-  impress_btn.style.display = "none"
-  impress_btn_back.style.display = "none"
-  impress_wrapper.style.width = "93%"
-
-  window.print()
-
-  impress_wrapper.style.display = "none"
-  index_wrapper.style.display = "flex"
-  impress_btn.style.display = "block"
-  impress_btn_back.style.display = "block"
-  impress_wrapper.style.width = "50%"
-
-  window.location.reload(true)
+function isValidyEmail(email) {
+  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+  if (!regex.test(email)) {
+    return false
+  } else if (email.split("@")[1] != "sectet.pa.gov.br") {
+    return false
+  }
 }
 
 function generateUser() {
@@ -301,6 +280,7 @@ function generateUser() {
     registration: index_input_registration.value,
     month: index_select_month.value,
     workload: index_select_workload.value,
+    email: index_input_email.value
   }
 
   const fieldsToCheck = Object.values(user)
@@ -330,6 +310,11 @@ function generateUser() {
     return
   }
 
+  if(isValidyEmail(user.email) == false){
+    alert("O campo de email deve ser um email institucional.")
+    return
+  }
+
   fillMonthTable(user)
 
   index_wrapper.style.display = "none"
@@ -346,7 +331,7 @@ function fillMonthTable(user) {
   const daysInMonth = new Date(currentYear, user.month, 0).getDate()
   const isHoliday = (day, month) => holidays.some((holiday) => holiday.day == day && holiday.month == month)
   const dayOfWeekCellContent = (isSaturday, isSunday, isHoliday) =>
-      isHoliday ? "FERIADO NACIONAL" : 
+      isHoliday ? "FERIADO" : 
       isSaturday ? "SÁBADO" : 
       isSunday ? "DOMINGO" : 
       ""
@@ -363,25 +348,38 @@ function fillMonthTable(user) {
     const cellContent = dayOfWeekCellContent(isSaturday, isSunday, holiday)
     const cellClass = weekendClass(isSaturday, isSunday)
 
-    if (cellContent == "FERIADO NACIONAL") {
+    if (cellContent == "FERIADO" && holidayInfo.morningLimit == false ) {
       const row = `
-      <tr class="holiday">
-        <td class="impress_cel-secondary-table -day">${i}</td>
-        <td class="impress_cel-secondary-table -rubric" colspan="7">${holidayName.toUpperCase()}</td>
+      <tr>
+        <td class="impress_cel-secondary-table -day holiday">${i}</td>
+        <td class="impress_cel-secondary-table -rubric holiday -holidayText" colspan="7">${holidayName.toUpperCase()}</td>
       </tr>
     `
       impress_secondary_table_tbody.insertAdjacentHTML("beforeend", row)
+    } else if (cellContent == "FERIADO" && holidayInfo.morningLimit == true ) {
+      const row = `
+      <tr>
+        <td class="impress_cel-secondary-table -day">${i}</td>
+        <td class="impress_cel-secondary-table -rubric"></td>
+        <td class="impress_cel-secondary-table -entrytime holiday -holidayText" colspan="2">${holidayName.toUpperCase()}</td>
+        <td class="impress_cel-secondary-table -exittime"></td>
+        <td class="impress_cel-secondary-table -entrytime"></td>
+        <td class="impress_cel-secondary-table -exittime"></td>
+        <td class="impress_cel-secondary-table -occurrences"></td>
+      </tr>
+    `
+      impress_secondary_table_tbody.insertAdjacentHTML("beforeend", row) 
     } else {
       const row = `
       <tr>
         <td class="impress_cel-secondary-table -day ${cellClass}">${i}</td>
-        <td class="impress_cel-secondary-table -rubric ${cellClass}">${cellContent}</td>
-        <td class="impress_cel-secondary-table -entrytime ${cellClass}">${cellContent}</td>
-        <td class="impress_cel-secondary-table -exittime ${cellClass}">${cellContent}</td>
-        <td class="impress_cel-secondary-table -entrytime ${cellClass}">${cellContent}</td>
-        <td class="impress_cel-secondary-table -exittime ${cellClass}">${cellContent}</td>
-        <td class="impress_cel-secondary-table -occurrences ${cellClass}">${cellContent}</td>
-        <td class="impress_cel-secondary-table -observations ${cellClass}">${cellContent}</td>
+        <td class="impress_cel-secondary-table -rubric ${cellClass} -weekendText">${cellContent}</td>
+        <td class="impress_cel-secondary-table -entrytime ${cellClass} -weekendText">${cellContent}</td>
+        <td class="impress_cel-secondary-table -exittime ${cellClass} -weekendText">${cellContent}</td>
+        <td class="impress_cel-secondary-table -entrytime ${cellClass} -weekendText">${cellContent}</td>
+        <td class="impress_cel-secondary-table -exittime ${cellClass} -weekendText">${cellContent}</td>
+        <td class="impress_cel-secondary-table -occurrences ${cellClass} -weekendText">${cellContent}</td>
+        <td class="impress_cel-secondary-table -observations ${cellClass} -weekendText">${cellContent}</td>
       </tr>
     `
       impress_secondary_table_tbody.insertAdjacentHTML("beforeend", row)
@@ -421,3 +419,71 @@ function fillMonthTable(user) {
   impress_location.innerHTML = user.location.toUpperCase()
   impress_workload.innerHTML = user.workload
 }
+
+function backToIndex() {
+  impress_wrapper.style.display = "none"
+  wrapper_loader.style.display = "flex"
+  loader.style.display = "block"
+  setTimeout(() => {
+    index_wrapper.style.display = "flex"
+    impress_btn.style.display = "block"
+    impress_wrapper.style.width = "50%"
+
+    wrapper_loader.style.display = "none"
+    loader.style.display = "none"
+  }, 800)
+}
+
+async function makePDF() {
+  impress_btn.style.display = "none"
+  impress_btn_back.style.display = "none"
+  impress_wrapper.style.width = "93%"
+
+  window.print()
+
+  impress_wrapper.style.display = "none"
+  index_wrapper.style.display = "flex"
+  impress_btn.style.display = "block"
+  impress_btn_back.style.display = "block"
+  impress_wrapper.style.width = "50%"
+
+  const user = {
+    directorate: index_select_sector_primary.value,
+    sector: index_select_sector_secondary.value,
+    name: index_input_name.value,
+    role: index_input_role.value,
+    location: index_select_location.value,
+    registration: index_input_registration.value,
+    month: index_select_month.value,
+    workload: index_select_workload.value,
+    email: index_input_email.value,
+  }
+
+  index_wrapper.style.display = "none"
+  impress_wrapper.style.display = "none"
+  wrapper_loader.style.display = "flex"
+  loader.style.display = "block"
+
+  await postUser(user)
+
+  index_wrapper.style.display = "flex"
+  wrapper_loader.style.display = "none"
+  loader.style.display = "none"
+
+  window.location.reload(true)
+}
+
+async function postUser(user) {
+  try {
+    await fetch("https://sectet-frequency.onrender.com/users", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(user),
+    })
+  } catch (error) {
+    console.log(error)
+  }
+}
+
