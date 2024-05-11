@@ -34,9 +34,8 @@ body {
 }
 
 .index_form {
-    background-color: #ffffffd2;
+    background-color: #ffffffe1;
     box-shadow: 1px 1px 10px #0000003a;
-    margin: 5px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -52,7 +51,6 @@ body {
     text-align: center;
     width: 100%;
     padding: 5px;
-    margin-bottom: 5px;
     background-color: #0b6ebe;
     color: #fff;
     border-radius: 5px 5px 0px 0px;
@@ -87,8 +85,11 @@ body {
     margin-bottom: 2px;
 }
 
-.index_input-control>input,
-select {
+select:not(:-internal-select-author-button){
+    padding: 2px;
+}
+
+.index_input-control>input, select{
     font-size: 1.45em;
     border: 1px solid #0000003a;
     border-radius: 3px;
@@ -164,4 +165,54 @@ select:focus {
     filter: grayscale(100%);
     width: 12.5%;
     height: 11%;
+}
+
+@media screen and (min-width: 1340px) and (max-width: 1366px) {
+  .index_title {
+    font-size: 2.3em;
+  }
+
+  .index_subtitle {
+    font-size: 0.8em;
+  }
+
+  .index_input-container {
+    padding: 5px;
+    gap: 3px;
+  }
+
+  .index_input-control > label {
+    font-size: 1em;
+  }
+
+  select:not(:-internal-select-author-button) {
+    padding: 0;
+  }
+
+  .index_input-control>input, select {
+    font-size: .9em;
+    height: 30px;
+    padding: 4px;
+  }
+
+  .index_button-container {
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+
+  .index_button-container > button {
+    font-size: 1em;
+    width: 200px;
+    height: 30px;
+  }
+
+  .index_warning-container {
+    align-items: center;
+    font-size: 0.7em;
+  }
+
+  .index_warning-logo {
+    width: 15px;
+    height: 15px;
+  }
 }
