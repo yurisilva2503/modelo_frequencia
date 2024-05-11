@@ -283,15 +283,11 @@ function generateUser() {
     email: index_input_email.value
   }
 
-  const fieldsToCheck = Object.values(user)
+  let fieldsToCheck = Object.values(user)
+  fieldsToCheck = fieldsToCheck.slice(0, 5).concat(fieldsToCheck.slice(6))
 
   if (isEmptyOrNull(fieldsToCheck)) {
     alert("Por favor, preencha todos os campos antes de continuar.")
-    return
-  }
-
-  if(user.registration.length <= 6 || user.registration.length >= 11){
-    alert("O campo de matrícula deve ter no mínimo 7 e no máximo 10 caracteres.")
     return
   }
 
@@ -300,14 +296,23 @@ function generateUser() {
     return
   }
 
-  if (user.registration.includes("/")) {
-    if (user.registration.split("/")[1].length != 1) {
-      alert("O campo de matrícula deve ter apenas um número após a barra.")
-      return
+  if (user.registration) {
+    if (user.registration.length <= 6 || user.registration.length >= 11) {
+      alert(
+        "O campo de matrícula deve ter no mínimo 7 e no máximo 10 caracteres."
+      );
+      return;
+    } else if (user.registration.includes("/")) {
+      if (user.registration.split("/")[1].length != 1) {
+        alert("O campo de matrícula deve ter apenas um número após a barra.");
+        return;
+      }
+    } else if (user.registration.length > 8) {
+      alert(
+        "Números de matrícula sem a barra devem conter no máximo 8 caracteres."
+      );
+      return;
     }
-  } else if (user.registration.length > 8) {
-    alert("Números de matrícula sem a barra devem conter no máximo 8 caracteres.")
-    return
   }
 
   if(isValidyEmail(user.email) == false){
@@ -427,7 +432,7 @@ function backToIndex() {
   setTimeout(() => {
     index_wrapper.style.display = "flex"
     impress_btn.style.display = "block"
-    impress_wrapper.style.width = "50%"
+    impress_wrapper.style.width = "51%"
 
     wrapper_loader.style.display = "none"
     loader.style.display = "none"
@@ -445,7 +450,7 @@ async function makePDF() {
   index_wrapper.style.display = "flex"
   impress_btn.style.display = "block"
   impress_btn_back.style.display = "block"
-  impress_wrapper.style.width = "50%"
+  impress_wrapper.style.width = "51%"
 
   const user = {
     directorate: index_select_sector_primary.value,

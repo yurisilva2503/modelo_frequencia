@@ -1,12 +1,8 @@
 @media screen and (min-width: 1360px) and (max-width: 1366px) {
-  #impress_wrapper {
-    width: 60%;
-  }
-
   .impress_btn {
-  font-size: 1em;
-  color: #fff;
-  width: 170px;
-  height: 30px;
-}
+    font-size: 1em;
+    color: #fff;
+    width: 170px;
+    height: 30px;
+  }
 }
