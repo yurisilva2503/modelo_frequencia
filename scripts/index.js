@@ -444,51 +444,20 @@ async function makePDF() {
   impress_btn_back.style.display = "none"
   impress_wrapper.style.width = "93%"
 
-  // window.print()
+  window.print()
 
   impress_wrapper.style.display = "none"
-  index_wrapper.style.display = "flex"
+  impress_wrapper.style.width = "51%"
   impress_btn.style.display = "block"
   impress_btn_back.style.display = "block"
-  impress_wrapper.style.width = "51%"
-
-  const user = {
-    directorate: index_select_sector_primary.value,
-    sector: index_select_sector_secondary.value,
-    name: index_input_name.value,
-    role: index_input_role.value,
-    location: index_select_location.value,
-    registration: index_input_registration.value,
-    month: index_select_month.value,
-    workload: index_select_workload.value,
-    email: index_input_email.value,
-  }
-
-  index_wrapper.style.display = "none"
-  impress_wrapper.style.display = "none"
   wrapper_loader.style.display = "flex"
   loader.style.display = "block"
 
-  await postUser(user)
+  setTimeout(() => {
+    index_wrapper.style.display = "flex"
+    wrapper_loader.style.display = "none"
+    loader.style.display = "none"
+    window.location.reload();
+  }, 800)
 
-  index_wrapper.style.display = "flex"
-  wrapper_loader.style.display = "none"
-  loader.style.display = "none"
-
-  // window.location.reload(false)
 }
-
-async function postUser(user) {
-  try {
-    await fetch("https://sectet-frequency.onrender.com/users", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(user),
-    })
-  } catch (error) {
-    console.log(error)
-  }
-}
-
