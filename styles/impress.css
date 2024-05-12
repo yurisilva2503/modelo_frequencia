@@ -41,12 +41,14 @@
 }
 
 .impress_title {
-  padding-top: 2.5px;
+  padding-top: 3px;
+  padding-bottom: 2.5px;
   text-align: center;
 }
 
 .impress_infos-primary {
   width: 77%;
+  padding-bottom: 3px;
 }
 
 #impress_secondary-table-container {

@@ -104,10 +104,6 @@ select:focus {
     outline: #0b6ebe solid 2px;
 }
 
-.index_input-control.-email{
-    grid-column: 1 / 3;
-}
-
 .index_button-container {
     width: 100%;
     height: 100%;
