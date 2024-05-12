@@ -444,7 +444,7 @@ async function makePDF() {
   impress_btn_back.style.display = "none"
   impress_wrapper.style.width = "93%"
 
-  window.print()
+  // window.print()
 
   impress_wrapper.style.display = "none"
   index_wrapper.style.display = "flex"
@@ -475,7 +475,7 @@ async function makePDF() {
   wrapper_loader.style.display = "none"
   loader.style.display = "none"
 
-  window.location.reload(false)
+  // window.location.reload(false)
 }
 
 async function postUser(user) {
