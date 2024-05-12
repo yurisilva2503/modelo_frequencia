@@ -475,7 +475,7 @@ async function makePDF() {
   wrapper_loader.style.display = "none"
   loader.style.display = "none"
 
-  window.location.reload(true)
+  // window.location.reload(true)
 }
 
 async function postUser(user) {
