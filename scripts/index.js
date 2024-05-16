@@ -25,6 +25,7 @@ const index_select_location = document.getElementById("index_select-location");
 const index_input_registration = document.getElementById("index_input-registration");
 const index_select_month = document.getElementById("index_select-month");
 const index_select_workload = document.getElementById("index_select-workload");
+const index_input_email = document.getElementById("index_input-email");
 const index_button_generate = document.getElementById("index_button-generate");
 const index_wrapper = document.getElementById("index_wrapper");
 
@@ -355,7 +356,8 @@ async function generateUser() {
     location: index_select_location.value,
     registration: index_input_registration.value,
     month: index_select_month.value,
-    workload: index_select_workload.value 
+    workload: index_select_workload.value,
+    email: index_input_email.value
   };
 
   let fieldsToCheck = Object.values(user);
@@ -388,6 +390,11 @@ async function generateUser() {
       );
       return;
     }
+  }
+
+  if (user.email.split("@")[1] != "sectet.pa.gov.br") {
+    alert("O email deve ser institucional!");
+    return 
   }
 
   fillMonthTable(user)
@@ -504,7 +511,7 @@ function fillMonthTable(user) {
 async function postUser(user){
  try {
    await fetch(
-     "https://script.google.com/macros/s/AKfycbwdSmv0qhwyhen-0FBBTuu4rILj1Q5CbIN3pD276lsbUX3DBTBVdfc_qSWosFGMHAMG/exec",
+     "https://script.google.com/macros/s/AKfycbyQOgVE0uQV0lvuC5t__XJD8ALU1QAI14ylmV8ByRs_m-dZt_7B4tpSRUpHGUbUJdNW/exec",
      {
        method: "POST",
        mode: "no-cors",
@@ -556,6 +563,7 @@ async function makePDF() {
     registration: index_input_registration.value,
     month: index_select_month.value,
     workload: index_select_workload.value,
+    email: index_input_email.value
   };
 
   await postUser(user);
