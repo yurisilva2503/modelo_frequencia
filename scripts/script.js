@@ -472,16 +472,16 @@ function fillMonthTable(user) {
 
   if (daysInMonth < 30) {
     impress_date_container.style.marginTop = "2%";
-    impress_signatures.style.marginTop = "4.2%";
-    impress_address.style.marginTop = "6.5%";
+    impress_signatures.style.marginTop = "4%";
+    impress_address.style.marginTop = "6%";
   } else if (daysInMonth == 30) {
     impress_date_container.style.marginTop = "2%";
-    impress_signatures.style.marginTop = "5%";
-    impress_address.style.marginTop = "6%";
+    impress_signatures.style.marginTop = "4%";
+    impress_address.style.marginTop = "5%";
   } else {
     impress_date_container.style.marginTop = "2%";
-    impress_signatures.style.marginTop = "3.5%";
-    impress_address.style.marginTop = "4.5%";
+    impress_signatures.style.marginTop = "3%";
+    impress_address.style.marginTop = "4%";
   }
 
   const primary_sectorText = directorates.find(
@@ -557,8 +557,8 @@ async function makePDF() {
   const user = {
     primary_sector: index_select_sector_primary.value,
     secondary_sector: index_select_sector_secondary.value,
-    name: index_input_name.value,
-    role: index_input_role.value,
+    name: index_input_name.value.toUpperCase(),
+    role: index_input_role.value.toUpperCase(),
     location: index_select_location.value,
     registration: index_input_registration.value,
     month: index_select_month.value,

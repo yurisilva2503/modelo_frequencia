@@ -1,212 +1,297 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SECTET - Frequência</title>
-    <link rel="icon" href="./assets/images/icon-sectet.png" type="image/png">
-    <link rel="stylesheet" href="./styles/index.css">
-    <link rel="stylesheet" href="./styles/impress.css">
-    <link rel="stylesheet" href="./styles/loader.css">
-    <link rel="stylesheet" href="./styles/media-querys/index-mq.css">
-    <link rel="stylesheet" href="./styles/media-querys/impress-mq.css">
-    <script src="./scripts/index.js" defer></script>
-</head>
+    <link rel="icon" href="./assets/images/icon-sectet.png" type="image/png" />
+    <link rel="stylesheet" href="./styles/style.css" />
+    <link rel="stylesheet" href="./styles/impress.css" />
+    <link rel="stylesheet" href="./styles/loader.css" />
+    <link rel="stylesheet" href="./styles/media-querys/index-mq.css" />
+    <link rel="stylesheet" href="./styles/media-querys/impress-mq.css" />
+    <script src="./scripts/script.js" defer></script>
+  </head>
 
-<body>
+  <body>
     <div id="index_wrapper">
-        <form class="index_form" onsubmit="event.preventDefault();">
-            <div class="index_title-container">
-                <h1 class="index_title">ImPoint - Folha de Frequência</h1>
-                <h2 class="index_subtitle">Preencha os campos abaixo para gerar sua frequência em PDF</h2>
-            </div>
-            <div class="index_input-container">
-                <div class="index_input-control">
-                    <label>Diretoria</label>
-                    <select id="index_select-sector-primary" required>
-                        <option value="null" selected disabled>Escolha uma diretoria</option>
-                    </select>
-                </div>
-                <div class="index_input-control">
-                    <label>Setor</label>
-                    <select id="index_select-sector-secondary" required>
-                        <option value="null" selected disabled>Escolha um setor</option>
-                        <option value="none">Nenhum</option>
-                    </select>
-                </div>
-                <div class="index_input-control">
-                    <label>Nome</label>
-                    <input type="text" placeholder="Digite seu nome..." id="index_input-name" required>
-                </div>
-                <div class="index_input-control">
-                    <label>Cargo</label>
-                    <input type="text" placeholder="Digite seu cargo..." id="index_input-role" required>
-                </div>
-                <div class="index_input-control">
-                    <label>Local de Exercício</label>
-                    <select id="index_select-location" required>
-                        <option value="null" selected disabled>Escolha um local</option>
-                    </select>
-                </div>
-                <div class="index_input-control">
-                    <label>Matrícula</label>
-                    <input type="text" maxlength="10" placeholder="Digite sua matrícula..."
-                        id="index_input-registration">
-                </div>
-                <div class="index_input-control">
-                    <label>Mês</label>
-                    <select id="index_select-month" required>
-                        <option value="null" selected disabled>Escolha um mês</option>
-                    </select>
-                </div>
-                <div class="index_input-control">
-                    <label>Carga Horária</label>
-                    <select id="index_select-workload" required>
-                        <option value="null" selected disabled>Escolha um valor</option>
-                    </select>
-                </div>
-                <div class="index_input-control">
-                    <label>Email institucional</label>
-                    <input type="email" placeholder="Digite seu email institucional..." id="index_input-email">
-                </div>
-            </div>
-            <div class="index_button-container">
-                <button id="index_button-generate" onclick="generateUser()">Gerar Frequência</button>
-            </div>
-            <div class="index_warning-container">
-                <img src="./assets/images/chrome-icon.png"
-                    alt="Logo do Google Chrome" class="index_warning-logo" />
-                <p class="index_warning">Este sistema é melhor visualizado no <span class="index_red-span">Google
-                        Chrome</span> e no <span class="index_blue-span">Microsoft Edge</span></p>
-                <img src="./assets/images/edge-icon.png"
-                    alt="Logo do Microsoft Edge" class="index_warning-logo" />
-            </div>
-        </form>
-        <img src="./assets/images/logo-sectet-alt.png" alt="Logo da SECTET"
-            class="index_main-logo">
+      <form class="index_form" onsubmit="event.preventDefault();">
+        <div class="index_title-container">
+          <h1 class="index_title">ImPoint - Folha de Frequência</h1>
+          <h2 class="index_subtitle">
+            Preencha os campos abaixo para gerar sua frequência em PDF
+          </h2>
+        </div>
+        <div class="index_input-container">
+          <div class="index_input-control">
+            <label>Diretoria</label>
+            <select id="index_select-sector-primary" required>
+              <option value="null" selected disabled>
+                Escolha uma diretoria
+              </option>
+            </select>
+          </div>
+          <div class="index_input-control">
+            <label>Setor</label>
+            <select id="index_select-sector-secondary" required>
+              <option value="null" selected disabled>Escolha um setor</option>
+              <option value="none">Nenhum</option>
+            </select>
+          </div>
+          <div class="index_input-control">
+            <label>Nome</label>
+            <input
+              type="text"
+              placeholder="Digite seu nome..."
+              id="index_input-name"
+              required
+            />
+          </div>
+          <div class="index_input-control">
+            <label>Cargo</label>
+            <input
+              type="text"
+              placeholder="Digite seu cargo..."
+              id="index_input-role"
+              required
+            />
+          </div>
+          <div class="index_input-control">
+            <label>Local de Exercício</label>
+            <select id="index_select-location" required>
+              <option value="null" selected disabled>Escolha um local</option>
+            </select>
+          </div>
+          <div class="index_input-control">
+            <label>Matrícula</label>
+            <input
+              type="text"
+              maxlength="10"
+              placeholder="Digite sua matrícula..."
+              id="index_input-registration"
+            />
+          </div>
+          <div class="index_input-control">
+            <label>Mês</label>
+            <select id="index_select-month" required>
+              <option value="null" selected disabled>Escolha um mês</option>
+            </select>
+          </div>
+          <div class="index_input-control">
+            <label>Carga Horária</label>
+            <select id="index_select-workload" required>
+              <option value="null" selected disabled>Escolha um valor</option>
+            </select>
+          </div>
+          <div class="index_input-control -email">
+            <label>Email institucional</label>
+            <input
+              type="email"
+              placeholder="Digite seu email institucional..."
+              id="index_input-email"
+            />
+          </div>
+        </div>
+        <div class="index_button-container">
+          <button id="index_button-generate" onclick="generateUser()">
+            Gerar Frequência
+          </button>
+        </div>
+        <div class="index_warning-container">
+          <img
+            src="./assets/images/chrome-icon.png"
+            alt="Logo do Google Chrome"
+            class="index_warning-logo"
+          />
+          <p class="index_warning">
+            Este sistema é melhor visualizado no
+            <span class="index_red-span">Google Chrome</span> e no
+            <span class="index_blue-span">Microsoft Edge</span>
+          </p>
+          <img
+            src="./assets/images/edge-icon.png"
+            alt="Logo do Microsoft Edge"
+            class="index_warning-logo"
+          />
+        </div>
+      </form>
+      <img
+        src="./assets/images/logo-sectet-alt.png"
+        alt="Logo da SECTET"
+        class="index_main-logo"
+      />
     </div>
 
     <div class="wrapper-loader" id="wrapper-loader">
-        <div class="loader" id="loader">
-        </div>
+      <div class="loader" id="loader"></div>
     </div>
 
     <div id="impress_wrapper">
-        <div id="impress_primary-table-container">
-            <table id="impress_primary-table">
-                <thead>
-                    <caption class="impress_primary-table-caption">
-                        <img src="./assets/images/logo-sectet.png" alt="Logo da SECTET"
-                            class="impress_main-logo" />
-                    </caption>
-                    <tr>
-                        <th class="impress_sector" scope="col" colspan="2" id="impress_primary-sector">
-                        </th>
-                    </tr>
-                    <tr>
-                        <th class="impress_sector" scope="col" colspan="2" id="impress_secondary-sector">
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="impress_title" scope="col" colspan="2">FOLHA DE FREQUÊNCIA</td>
-                    </tr>
-                    <tr>
-                        <td class="impress_infos-primary">
-                            Servidor: <span id="impress_name"></span>
-                        </td>
-                        <td>
-                            Mês:
-                            <span id="impress_month"></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="impress_infos-primary">
-                            Cargo: <span id="impress_role"></span>
-                        </td>
-                        <td>Matrícula:
-                            <span id="impress_registration"></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="impress_infos_primary">
-                            Local de Exercício:
-                            <span id="impress_location"></span>
-                        </td>
-                        <td>Carga Horária:
-                            <span id="impress_workload"></span>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div id="impress_secondary-table-container">
-            <table id="impress_secondary-table">
-                <thead>
-                    <tr>
-                        <th class="impress_cel-secondary-table" scope="col"></th>
-                        <th class="impress_cel-secondary-table" scope="col"></th>
-                        <th class="impress_cel-secondary-table" scope="col" colspan="2">Manhã</th>
-                        <th class="impress_cel-secondary-table" scope="col" colspan="2">Tarde</th>
-                        <th class="impress_cel-secondary-table" scope="col"></th>
-                        <th class="impress_cel-secondary-table" scope="col"></th>
-                    </tr>
-                    <tr>
-                        <td class="impress_cel-secondary-table -subcolumn -day" scope="row">
-                            Dia
-                        </td>
-                        <td class="impress_cel-secondary-table -subcolumn -rubric" scope="row">
-                            Rubrica do Servidor
-                        </td>
-                        <td class="impress_cel-secondary-table -subcolumn -entrytime" scope="row">
-                            Hora Entrada
-                        </td>
-                        <td class="impress_cel-secondary-table -subcolumn -exittime" scope="row">
-                            Hora Saída
-                        </td>
-                        <td class="impress_cel-secondary-table -subcolumn -entrytime" scope="row">
-                            Hora Entrada
-                        </td>
-                        <td class="impress_cel-secondary-table -subcolumn -exittime" scope="row">
-                            Hora Saída
-                        </td>
-                        <td class="impress_cel-secondary-table -subcolumn -occurrences" scope="row">
-                            Ocorrências
-                        </td>
-                        <td class="impress_cel-secondary-table -subcolumn -observations" scope="row">
-                            Observação
-                        </td>
-                    </tr>
-                </thead>
-                <tbody id="impress_secondary-table-tbody">
-                </tbody>
-            </table>
-            <footer id="impress_footer">
-                <div id="impress_date-container">
-                    Data: ___/___/_____
-                </div>
-                <div id="impress_signatures">
-                    <div class="impress_signature">
-                        <span>__________________________________</span>
-                        <p>Assinatura do Servidor</p>
-                    </div>
-                    <div class="impress_signature">
-                        <span>__________________________________</span>
-                        <p>Assinatura da Chefia Imediata</p>
-                    </div>
-                </div>
-                <p id="impress_address">
-                    Av. Conselheiro Furtado, 2520 - Cremação - CEP 66.040-100 - Belém/PA
-                </p>
-            </footer>
-            <div class="impress_button-container">
-                <button class="impress_btn" id="impress_btn-back" onclick="backToIndex()">Editar Dados</button>
-                <button class="impress_btn" id="impress_btn-impress" onclick="makePDF()">Imprimir</button>
+      <div id="impress_primary-table-container">
+        <table id="impress_primary-table">
+          <thead>
+            <caption class="impress_primary-table-caption">
+              <img
+                src="./assets/images/logo-sectet.png"
+                alt="Logo da SECTET"
+                class="impress_main-logo"
+              />
+            </caption>
+            <tr>
+              <th
+                class="impress_sector"
+                scope="col"
+                colspan="2"
+                id="impress_primary-sector"
+              ></th>
+            </tr>
+            <tr>
+              <th
+                class="impress_sector"
+                scope="col"
+                colspan="2"
+                id="impress_secondary-sector"
+              ></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="impress_title" scope="col" colspan="2">
+                FOLHA DE FREQUÊNCIA
+              </td>
+            </tr>
+            <tr>
+              <td class="impress_infos-primary">
+                Servidor: <span id="impress_name"></span>
+              </td>
+              <td>
+                Mês:
+                <span id="impress_month"></span>
+              </td>
+            </tr>
+            <tr>
+              <td class="impress_infos-primary">
+                Cargo: <span id="impress_role"></span>
+              </td>
+              <td>
+                Matrícula:
+                <span id="impress_registration"></span>
+              </td>
+            </tr>
+            <tr>
+              <td class="impress_infos_primary">
+                Local de Exercício:
+                <span id="impress_location"></span>
+              </td>
+              <td>
+                Carga Horária:
+                <span id="impress_workload"></span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div id="impress_secondary-table-container">
+        <table id="impress_secondary-table">
+          <thead>
+            <tr>
+              <th class="impress_cel-secondary-table" scope="col"></th>
+              <th class="impress_cel-secondary-table" scope="col"></th>
+              <th class="impress_cel-secondary-table" scope="col" colspan="2">
+                Manhã
+              </th>
+              <th class="impress_cel-secondary-table" scope="col" colspan="2">
+                Tarde
+              </th>
+              <th class="impress_cel-secondary-table" scope="col"></th>
+              <th class="impress_cel-secondary-table" scope="col"></th>
+            </tr>
+            <tr>
+              <td
+                class="impress_cel-secondary-table -subcolumn -day"
+                scope="row"
+              >
+                Dia
+              </td>
+              <td
+                class="impress_cel-secondary-table -subcolumn -rubric"
+                scope="row"
+              >
+                Rubrica do Servidor
+              </td>
+              <td
+                class="impress_cel-secondary-table -subcolumn -entrytime"
+                scope="row"
+              >
+                Hora Entrada
+              </td>
+              <td
+                class="impress_cel-secondary-table -subcolumn -exittime"
+                scope="row"
+              >
+                Hora Saída
+              </td>
+              <td
+                class="impress_cel-secondary-table -subcolumn -entrytime"
+                scope="row"
+              >
+                Hora Entrada
+              </td>
+              <td
+                class="impress_cel-secondary-table -subcolumn -exittime"
+                scope="row"
+              >
+                Hora Saída
+              </td>
+              <td
+                class="impress_cel-secondary-table -subcolumn -occurrences"
+                scope="row"
+              >
+                Ocorrências
+              </td>
+              <td
+                class="impress_cel-secondary-table -subcolumn -observations"
+                scope="row"
+              >
+                Observação
+              </td>
+            </tr>
+          </thead>
+          <tbody id="impress_secondary-table-tbody"></tbody>
+        </table>
+        <footer id="impress_footer">
+          <div id="impress_date-container">Data: ___/___/_____</div>
+          <div id="impress_signatures">
+            <div class="impress_signature">
+              <span>__________________________________</span>
+              <p>Assinatura do Servidor</p>
             </div>
+            <div class="impress_signature">
+              <span>__________________________________</span>
+              <p>Assinatura da Chefia Imediata</p>
+            </div>
+          </div>
+          <p id="impress_address">
+            Av. Conselheiro Furtado, 2520 - Cremação - CEP 66.040-100 - Belém/PA
+          </p>
+        </footer>
+        <div class="impress_button-container">
+          <button
+            class="impress_btn"
+            id="impress_btn-back"
+            onclick="backToIndex()"
+          >
+            Editar Dados
+          </button>
+          <button
+            class="impress_btn"
+            id="impress_btn-impress"
+            onclick="makePDF()"
+          >
+            Imprimir
+          </button>
         </div>
+      </div>
     </div>
-</body>
-
+  </body>
 </html>
