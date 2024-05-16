@@ -36,63 +36,61 @@ const loader = document.getElementById("loader");
 const monthsofyear = [
   {
     id: 1,
-    name: "Janeiro",
+    name: "Janeiro"
   },
   {
     id: 2,
-    name: "Fevereiro",
+    name: "Fevereiro"
   },
   {
     id: 3,
-    name: "Março",
+    name: "Março"
   },
   {
     id: 4,
-    name: "Abril",
+    name: "Abril"
   },
   {
     id: 5,
-    name: "Maio",
+    name: "Maio"
   },
   {
     id: 6,
-    name: "Junho",
+    name: "Junho"
   },
   {
     id: 7,
-    name: "Julho",
+    name: "Julho"
   },
   {
     id: 8,
-    name: "Agosto",
+    name: "Agosto"
   },
   {
     id: 9,
-    name: "Setembro",
+    name: "Setembro"
   },
   {
     id: 10,
-    name: "Outubro",
+    name: "Outubro"
   },
   {
     id: 11,
-    name: "Novembro",
+    name: "Novembro"
   },
   {
     id: 12,
-    name: "Dezembro",
+    name: "Dezembro"
+
   },
 ];
 
 const directorates = [
   { id: "DAF", name: "Diretoria de Administração e Finanças - DAF" },
   { id: "DCT", name: "Diretoria de Ciência e Tecnologia - DCT" },
-  {
-    id: "DETEC",
-    name: "Anexo-Diretoria de Educação Profissional e Tecnológica - DETEC",
-  },
+  { id: "DETEC", name: "Anexo-Diretoria de Educação Profissional e Tecnológica - DETEC" },
   { id: "GABINETE", name: "Gabinete" },
-  { id: "SECAD", name: "Secretaria Adjunta - SECAD" },
+  { id: "SECAD", name: "Secretaria Adjunta - SECAD" }
 ];
 
 const sectors = [
