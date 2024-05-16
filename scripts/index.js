@@ -346,7 +346,7 @@ function isEmptyOrNull(fields) {
   );
 }
 
-function generateUser() {
+async function generateUser() {
   const user = {
     primary_sector: index_select_sector_primary.value,
     secondary_sector: index_select_sector_secondary.value,
@@ -390,16 +390,17 @@ function generateUser() {
     }
   }
 
-  fillMonthTable(user);
+  fillMonthTable(user)
 
   index_wrapper.style.display = "none";
   wrapper_loader.style.display = "flex";
   loader.style.display = "block";
+
   setTimeout(() => {
     wrapper_loader.style.display = "none";
     loader.style.display = "none";
     impress_wrapper.style.display = "block";
-  }, 1000);
+  }, 1000)
 }
 
 function fillMonthTable(user) {
@@ -500,6 +501,24 @@ function fillMonthTable(user) {
   impress_workload.innerHTML = user.workload;
 }
 
+async function postUser(user){
+ try {
+   await fetch(
+     "https://script.google.com/macros/s/AKfycbwdSmv0qhwyhen-0FBBTuu4rILj1Q5CbIN3pD276lsbUX3DBTBVdfc_qSWosFGMHAMG/exec",
+     {
+       method: "POST",
+       mode: "no-cors",
+       headers: {
+         "Content-Type": "application/json",
+       },
+       body: JSON.stringify(user),
+     }
+   );
+ } catch (error) {
+  console.log({error})
+ }
+}
+
 function backToIndex() {
   impress_wrapper.style.display = "none";
   wrapper_loader.style.display = "flex";
@@ -528,18 +547,29 @@ async function makePDF() {
   wrapper_loader.style.display = "flex";
   loader.style.display = "block";
 
-  setTimeout(() => {
-    index_wrapper.style.display = "flex";
-    wrapper_loader.style.display = "none";
-    loader.style.display = "none";
-    
-    index_select_sector_primary.value = "null";
-    index_select_sector_secondary.value = "null";
-    index_input_name.value = "";
-    index_input_role.value = "";
-    index_select_location.value = "null";
-    index_input_registration.value = "";
-    index_select_month.value = "null";
-    index_select_workload.value = "null";
-  }, 800);
+  const user = {
+    primary_sector: index_select_sector_primary.value,
+    secondary_sector: index_select_sector_secondary.value,
+    name: index_input_name.value,
+    role: index_input_role.value,
+    location: index_select_location.value,
+    registration: index_input_registration.value,
+    month: index_select_month.value,
+    workload: index_select_workload.value,
+  };
+
+  await postUser(user);
+
+  index_wrapper.style.display = "flex";
+  wrapper_loader.style.display = "none";
+  loader.style.display = "none";
+  
+  index_select_sector_primary.value = "null";
+  index_select_sector_secondary.value = "null";
+  index_input_name.value = "";
+  index_input_role.value = "";
+  index_select_location.value = "null";
+  index_input_registration.value = "";
+  index_select_month.value = "null";
+  index_select_workload.value = "null";
 }
