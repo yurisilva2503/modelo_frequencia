@@ -4,17 +4,72 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SECTET - Frequência</title>
-    <link rel="icon" href="./assets/images/icon-sectet.png" type="image/png" />
-    <link rel="stylesheet" href="./styles/style.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="icon" href="./assets/images/favicon.png" type="image/png" />
+    <link rel="stylesheet" href="./styles/reset.css" />
+    <link rel="stylesheet" href="./styles/index.css" />
     <link rel="stylesheet" href="./styles/impress.css" />
+    <link rel="stylesheet" href="./styles/media-querys/indexmq.css">
+    <link rel="stylesheet" href="./styles/media-querys/impressmq.css">
     <link rel="stylesheet" href="./styles/loader.css" />
-    <link rel="stylesheet" href="./styles/media-querys/index-mq.css" />
-    <link rel="stylesheet" href="./styles/media-querys/impress-mq.css" />
+    <script src="./scripts/index.js" defer></script>
   </head>
 
-  <body id="body">
+  <body>
     <div id="index_wrapper">
-      <form class="index_form" onsubmit="event.preventDefault();">
+      <aside class="index_aside" id="index_aside">
+        <div class="index_aside-title-container">
+          <div class="hr -aside"></div>
+          <h3>Observações de Uso</h3>
+          <div class="hr -aside"></div>
+        </div>
+        <div class="index_aside-content-container">
+          <div class="index_aside-content">
+            <p>Se você tiver algum problema com as <strong>cores de fundo</strong> (Rubrica, Hora de Entrada, Sábado, Domingo, etc.) não aparecendo na
+              pré-visualização ou na impressão da sua folha de frequência em si, basta seguir alguns passos para resolver: </p>
+            <div class="index_aside-section">
+              <div class="index_aside-logo-container">
+                <div class="hr"></div>
+                <img src="./assets/images/edge-icon.png" alt="Logo do Microsoft Edge" class="index_aside-logo" />
+                <img src="./assets/images/chrome-icon.png" alt="Logo do Google Chrome" class="index_aside-logo -chrome" />
+                <div class="hr"></div>
+              </div>
+              <p>Vá em <strong>"Mais definições" ou "Mais configurações"</strong> na hora de imprimir e marque a opção <strong>
+                "Elementos gráficos de plano
+                  de fundo"
+              </strong>. Assim, as cores de fundo aparecerão normalmente.</p>
+            </div>
+            <div class="index_aside-section">
+              <div class="index_aside-logo-container">
+                <div class="hr"></div>
+                <img src="./assets/images/firefox-icon.png" alt="Logo do Firefox" class="index_aside-logo -firefox" />
+                <div class="hr"></div>
+              </div>
+              <p>Para imprimir com as cores de fundo, vá em <strong>"Mais configurações"</strong> e ative a opção <strong>"Imprimir fundo"</strong>.
+                <strong>Se a impressão sair em duas páginas, ajuste a escala para "98%" em "Mais configurações > Escala"</strong>.</p>
+            </div>
+            <div class="index_aside-section">
+              <div class="index_aside-logo-container">
+                <div class="hr"></div>
+                <span class="material-symbols-outlined -call">phone_in_talk</span>
+                <div class="hr"></div>
+              </div>
+              <p>Se você tiver alguma outra observação para fazer, basta ligar para o suporte da <strong>Getic</strong> no <strong>Ramal: 3110-1937</strong>.</p>
+            </div>
+            <div class="aside_close-btn-container">
+              <button class="aside-btn -close" id="aside-close">Fechar</button>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <div class="aside_open-btn-container">
+        <button class="aside-btn -open" id="aside-open">Observações de Uso
+          <p class="material-symbols-outlined">menu_book</p>
+        </button>
+      </div>
+
+      <div class="index_form" id="index_form">
         <div class="index_title-container">
           <h1 class="index_title">ImPoint - Folha de Frequência</h1>
           <h2 class="index_subtitle">
@@ -83,7 +138,7 @@
             </select>
           </div>
           <div class="index_input-control -email">
-            <label>Email institucional</label>
+            <label>Email Institucional</label>
             <input
               type="email"
               placeholder="Digite seu email institucional..."
@@ -92,7 +147,7 @@
           </div>
         </div>
         <div class="index_button-container">
-          <button id="index_button-generate" onclick="generateUser()">
+          <button class="form-btn -impress" id="index_button-generate" onclick="generateUser()">
             Gerar Frequência
           </button>
         </div>
@@ -113,7 +168,7 @@
             class="index_warning-logo"
           />
         </div>
-      </form>
+      </div>
       <img
         src="./assets/images/logo-sectet-alt.png"
         alt="Logo da SECTET"
@@ -142,7 +197,7 @@
                 scope="col"
                 colspan="2"
                 id="impress_primary-sector"
-              ></th>
+              >Diretoria de Administração e Finanças - DAF</th>
             </tr>
             <tr>
               <th
@@ -150,7 +205,7 @@
                 scope="col"
                 colspan="2"
                 id="impress_secondary-sector"
-              ></th>
+              >Diretoria de Administração e Finanças - DAF</th>
             </tr>
           </thead>
           <tbody>
@@ -161,30 +216,30 @@
             </tr>
             <tr>
               <td class="impress_infos-primary">
-                Servidor: <span id="impress_name"></span>
+                Servidor: <span id="impress_name">YURI GABRIEL DA SILVA FERREIRA</span>
               </td>
               <td>
                 Mês:
-                <span id="impress_month"></span>
+                <span id="impress_month">DEZEMBRO/2024</span>
               </td>
             </tr>
             <tr>
               <td class="impress_infos-primary">
-                Cargo: <span id="impress_role"></span>
+                Cargo: <span id="impress_role">ESTAGIÁRIO</span>
               </td>
               <td>
                 Matrícula:
-                <span id="impress_registration"></span>
+                <span id="impress_registration">5981593/1</span>
               </td>
             </tr>
             <tr>
               <td class="impress_infos_primary">
                 Local de Exercício:
-                <span id="impress_location"></span>
+                <span id="impress_location">GETIC</span>
               </td>
               <td>
                 Carga Horária:
-                <span id="impress_workload"></span>
+                <span id="impress_workload">4H</span>
               </td>
             </tr>
           </tbody>
@@ -256,7 +311,318 @@
               </td>
             </tr>
           </thead>
-          <tbody id="impress_secondary-table-tbody"></tbody>
+          <tbody id="impress_secondary-table-tbody">
+            <tr>
+              <td class="impress_cel-secondary-table -day">1</td>
+              <td class="impress_cel-secondary-table -rubric"></td>
+              <td class="impress_cel-secondary-table -entrytime"></td>
+              <td class="impress_cel-secondary-table -exittime"></td>
+              <td class="impress_cel-secondary-table -entrytime"></td>
+              <td class="impress_cel-secondary-table -exittime"></td>
+              <td class="impress_cel-secondary-table -occurrences"></td>
+              <td class="impress_cel-secondary-table -observations"></td>
+            </tr>
+            <tr>
+              <td class="impress_cel-secondary-table -day">2</td>
+              <td class="impress_cel-secondary-table -rubric"></td>
+              <td class="impress_cel-secondary-table -entrytime"></td>
+              <td class="impress_cel-secondary-table -exittime"></td>
+              <td class="impress_cel-secondary-table -entrytime"></td>
+              <td class="impress_cel-secondary-table -exittime"></td>
+              <td class="impress_cel-secondary-table -occurrences"></td>
+              <td class="impress_cel-secondary-table -observations"></td>
+            </tr>
+            <tr>
+              <td class="impress_cel-secondary-table -day">3</td>
+              <td class="impress_cel-secondary-table -rubric"></td>
+              <td class="impress_cel-secondary-table -entrytime"></td>
+              <td class="impress_cel-secondary-table -exittime"></td>
+              <td class="impress_cel-secondary-table -entrytime"></td>
+              <td class="impress_cel-secondary-table -exittime"></td>
+              <td class="impress_cel-secondary-table -occurrences"></td>
+              <td class="impress_cel-secondary-table -observations"></td>
+            </tr>
+            <tr>
+              <td class="impress_cel-secondary-table -day">4</td>
+              <td class="impress_cel-secondary-table -rubric"></td>
+              <td class="impress_cel-secondary-table -entrytime"></td>
+              <td class="impress_cel-secondary-table -exittime"></td>
+              <td class="impress_cel-secondary-table -entrytime"></td>
+              <td class="impress_cel-secondary-table -exittime"></td>
+              <td class="impress_cel-secondary-table -occurrences"></td>
+              <td class="impress_cel-secondary-table -observations"></td>
+            </tr>
+            <tr>
+              <td class="impress_cel-secondary-table -day">5</td>
+              <td class="impress_cel-secondary-table -rubric"></td>
+              <td class="impress_cel-secondary-table -entrytime"></td>
+              <td class="impress_cel-secondary-table -exittime"></td>
+              <td class="impress_cel-secondary-table -entrytime"></td>
+              <td class="impress_cel-secondary-table -exittime"></td>
+              <td class="impress_cel-secondary-table -occurrences"></td>
+              <td class="impress_cel-secondary-table -observations"></td>
+            </tr>
+            <tr>
+              <td class="impress_cel-secondary-table -day">6</td>
+              <td class="impress_cel-secondary-table -rubric"></td>
+              <td class="impress_cel-secondary-table -entrytime"></td>
+              <td class="impress_cel-secondary-table -exittime"></td>
+              <td class="impress_cel-secondary-table -entrytime"></td>
+              <td class="impress_cel-secondary-table -exittime"></td>
+              <td class="impress_cel-secondary-table -occurrences"></td>
+              <td class="impress_cel-secondary-table -observations"></td>
+            </tr>
+            <tr>
+              <td class="impress_cel-secondary-table -day">7</td>
+              <td class="impress_cel-secondary-table -rubric"></td>
+              <td class="impress_cel-secondary-table -entrytime"></td>
+              <td class="impress_cel-secondary-table -exittime"></td>
+              <td class="impress_cel-secondary-table -entrytime"></td>
+              <td class="impress_cel-secondary-table -exittime"></td>
+              <td class="impress_cel-secondary-table -occurrences"></td>
+              <td class="impress_cel-secondary-table -observations"></td>
+            </tr>
+            <tr>
+              <td class="impress_cel-secondary-table -day">8</td>
+              <td class="impress_cel-secondary-table -rubric"></td>
+              <td class="impress_cel-secondary-table -entrytime"></td>
+              <td class="impress_cel-secondary-table -exittime"></td>
+              <td class="impress_cel-secondary-table -entrytime"></td>
+              <td class="impress_cel-secondary-table -exittime"></td>
+              <td class="impress_cel-secondary-table -occurrences"></td>
+              <td class="impress_cel-secondary-table -observations"></td>
+            </tr>
+            <tr>
+              <td class="impress_cel-secondary-table -day">9</td>
+              <td class="impress_cel-secondary-table -rubric"></td>
+              <td class="impress_cel-secondary-table -entrytime"></td>
+              <td class="impress_cel-secondary-table -exittime"></td>
+              <td class="impress_cel-secondary-table -entrytime"></td>
+              <td class="impress_cel-secondary-table -exittime"></td>
+              <td class="impress_cel-secondary-table -occurrences"></td>
+              <td class="impress_cel-secondary-table -observations"></td>
+            </tr>
+            <tr>
+              <td class="impress_cel-secondary-table -day">10</td>
+              <td class="impress_cel-secondary-table -rubric"></td>
+              <td class="impress_cel-secondary-table -entrytime"></td>
+              <td class="impress_cel-secondary-table -exittime"></td>
+              <td class="impress_cel-secondary-table -entrytime"></td>
+              <td class="impress_cel-secondary-table -exittime"></td>
+              <td class="impress_cel-secondary-table -occurrences"></td>
+              <td class="impress_cel-secondary-table -observations"></td>
+            </tr>
+            <tr>
+              <td class="impress_cel-secondary-table -day">11</td>
+              <td class="impress_cel-secondary-table -rubric"></td>
+              <td class="impress_cel-secondary-table -entrytime"></td>
+              <td class="impress_cel-secondary-table -exittime"></td>
+              <td class="impress_cel-secondary-table -entrytime"></td>
+              <td class="impress_cel-secondary-table -exittime"></td>
+              <td class="impress_cel-secondary-table -occurrences"></td>
+              <td class="impress_cel-secondary-table -observations"></td>
+            </tr>
+            <tr>
+              <td class="impress_cel-secondary-table -day">12</td>
+              <td class="impress_cel-secondary-table -rubric"></td>
+              <td class="impress_cel-secondary-table -entrytime"></td>
+              <td class="impress_cel-secondary-table -exittime"></td>
+              <td class="impress_cel-secondary-table -entrytime"></td>
+              <td class="impress_cel-secondary-table -exittime"></td>
+              <td class="impress_cel-secondary-table -occurrences"></td>
+              <td class="impress_cel-secondary-table -observations"></td>
+            </tr>
+            <tr>
+              <td class="impress_cel-secondary-table -day">13</td>
+              <td class="impress_cel-secondary-table -rubric"></td>
+              <td class="impress_cel-secondary-table -entrytime"></td>
+              <td class="impress_cel-secondary-table -exittime"></td>
+              <td class="impress_cel-secondary-table -entrytime"></td>
+              <td class="impress_cel-secondary-table -exittime"></td>
+              <td class="impress_cel-secondary-table -occurrences"></td>
+              <td class="impress_cel-secondary-table -observations"></td>
+            </tr>
+            <tr>
+              <td class="impress_cel-secondary-table -day">14</td>
+              <td class="impress_cel-secondary-table -rubric"></td>
+              <td class="impress_cel-secondary-table -entrytime"></td>
+              <td class="impress_cel-secondary-table -exittime"></td>
+              <td class="impress_cel-secondary-table -entrytime"></td>
+              <td class="impress_cel-secondary-table -exittime"></td>
+              <td class="impress_cel-secondary-table -occurrences"></td>
+              <td class="impress_cel-secondary-table -observations"></td>
+            </tr>
+            <tr>
+              <td class="impress_cel-secondary-table -day">15</td>
+              <td class="impress_cel-secondary-table -rubric"></td>
+              <td class="impress_cel-secondary-table -entrytime"></td>
+              <td class="impress_cel-secondary-table -exittime"></td>
+              <td class="impress_cel-secondary-table -entrytime"></td>
+              <td class="impress_cel-secondary-table -exittime"></td>
+              <td class="impress_cel-secondary-table -occurrences"></td>
+              <td class="impress_cel-secondary-table -observations"></td>
+            </tr>
+            <tr>
+              <td class="impress_cel-secondary-table -day">16</td>
+              <td class="impress_cel-secondary-table -rubric"></td>
+              <td class="impress_cel-secondary-table -entrytime"></td>
+              <td class="impress_cel-secondary-table -exittime"></td>
+              <td class="impress_cel-secondary-table -entrytime"></td>
+              <td class="impress_cel-secondary-table -exittime"></td>
+              <td class="impress_cel-secondary-table -occurrences"></td>
+              <td class="impress_cel-secondary-table -observations"></td>
+            </tr>
+            <tr>
+              <td class="impress_cel-secondary-table -day">17</td>
+              <td class="impress_cel-secondary-table -rubric"></td>
+              <td class="impress_cel-secondary-table -entrytime"></td>
+              <td class="impress_cel-secondary-table -exittime"></td>
+              <td class="impress_cel-secondary-table -entrytime"></td>
+              <td class="impress_cel-secondary-table -exittime"></td>
+              <td class="impress_cel-secondary-table -occurrences"></td>
+              <td class="impress_cel-secondary-table -observations"></td>
+            </tr>
+            <tr>
+              <td class="impress_cel-secondary-table -day">18</td>
+              <td class="impress_cel-secondary-table -rubric"></td>
+              <td class="impress_cel-secondary-table -entrytime"></td>
+              <td class="impress_cel-secondary-table -exittime"></td>
+              <td class="impress_cel-secondary-table -entrytime"></td>
+              <td class="impress_cel-secondary-table -exittime"></td>
+              <td class="impress_cel-secondary-table -occurrences"></td>
+              <td class="impress_cel-secondary-table -observations"></td>
+            </tr>
+            <tr>
+              <td class="impress_cel-secondary-table -day">19</td>
+              <td class="impress_cel-secondary-table -rubric"></td>
+              <td class="impress_cel-secondary-table -entrytime"></td>
+              <td class="impress_cel-secondary-table -exittime"></td>
+              <td class="impress_cel-secondary-table -entrytime"></td>
+              <td class="impress_cel-secondary-table -exittime"></td>
+              <td class="impress_cel-secondary-table -occurrences"></td>
+              <td class="impress_cel-secondary-table -observations"></td>
+            </tr>
+            <tr>
+              <td class="impress_cel-secondary-table -day">20</td>
+              <td class="impress_cel-secondary-table -rubric"></td>
+              <td class="impress_cel-secondary-table -entrytime"></td>
+              <td class="impress_cel-secondary-table -exittime"></td>
+              <td class="impress_cel-secondary-table -entrytime"></td>
+              <td class="impress_cel-secondary-table -exittime"></td>
+              <td class="impress_cel-secondary-table -occurrences"></td>
+              <td class="impress_cel-secondary-table -observations"></td>
+            </tr>
+            <tr>
+              <td class="impress_cel-secondary-table -day">21</td>
+              <td class="impress_cel-secondary-table -rubric"></td>
+              <td class="impress_cel-secondary-table -entrytime"></td>
+              <td class="impress_cel-secondary-table -exittime"></td>
+              <td class="impress_cel-secondary-table -entrytime"></td>
+              <td class="impress_cel-secondary-table -exittime"></td>
+              <td class="impress_cel-secondary-table -occurrences"></td>
+              <td class="impress_cel-secondary-table -observations"></td>
+            </tr>
+            <tr>
+              <td class="impress_cel-secondary-table -day">22</td>
+              <td class="impress_cel-secondary-table -rubric"></td>
+              <td class="impress_cel-secondary-table -entrytime"></td>
+              <td class="impress_cel-secondary-table -exittime"></td>
+              <td class="impress_cel-secondary-table -entrytime"></td>
+              <td class="impress_cel-secondary-table -exittime"></td>
+              <td class="impress_cel-secondary-table -occurrences"></td>
+              <td class="impress_cel-secondary-table -observations"></td>
+            </tr>
+            <tr>
+              <td class="impress_cel-secondary-table -day">23</td>
+              <td class="impress_cel-secondary-table -rubric"></td>
+              <td class="impress_cel-secondary-table -entrytime"></td>
+              <td class="impress_cel-secondary-table -exittime"></td>
+              <td class="impress_cel-secondary-table -entrytime"></td>
+              <td class="impress_cel-secondary-table -exittime"></td>
+              <td class="impress_cel-secondary-table -occurrences"></td>
+              <td class="impress_cel-secondary-table -observations"></td>
+            </tr>
+            <tr>
+              <td class="impress_cel-secondary-table -day">24</td>
+              <td class="impress_cel-secondary-table -rubric"></td>
+              <td class="impress_cel-secondary-table -entrytime"></td>
+              <td class="impress_cel-secondary-table -exittime"></td>
+              <td class="impress_cel-secondary-table -entrytime"></td>
+              <td class="impress_cel-secondary-table -exittime"></td>
+              <td class="impress_cel-secondary-table -occurrences"></td>
+              <td class="impress_cel-secondary-table -observations"></td>
+            </tr>
+            <tr>
+              <td class="impress_cel-secondary-table -day">25</td>
+              <td class="impress_cel-secondary-table -rubric"></td>
+              <td class="impress_cel-secondary-table -entrytime"></td>
+              <td class="impress_cel-secondary-table -exittime"></td>
+              <td class="impress_cel-secondary-table -entrytime"></td>
+              <td class="impress_cel-secondary-table -exittime"></td>
+              <td class="impress_cel-secondary-table -occurrences"></td>
+              <td class="impress_cel-secondary-table -observations"></td>
+            </tr>
+            <tr>
+              <td class="impress_cel-secondary-table -day">26</td>
+              <td class="impress_cel-secondary-table -rubric"></td>
+              <td class="impress_cel-secondary-table -entrytime"></td>
+              <td class="impress_cel-secondary-table -exittime"></td>
+              <td class="impress_cel-secondary-table -entrytime"></td>
+              <td class="impress_cel-secondary-table -exittime"></td>
+              <td class="impress_cel-secondary-table -occurrences"></td>
+              <td class="impress_cel-secondary-table -observations"></td>
+            </tr>
+            <tr>
+              <td class="impress_cel-secondary-table -day">27</td>
+              <td class="impress_cel-secondary-table -rubric"></td>
+              <td class="impress_cel-secondary-table -entrytime"></td>
+              <td class="impress_cel-secondary-table -exittime"></td>
+              <td class="impress_cel-secondary-table -entrytime"></td>
+              <td class="impress_cel-secondary-table -exittime"></td>
+              <td class="impress_cel-secondary-table -occurrences"></td>
+              <td class="impress_cel-secondary-table -observations"></td>
+            </tr>
+            <tr>
+              <td class="impress_cel-secondary-table -day">28</td>
+              <td class="impress_cel-secondary-table -rubric"></td>
+              <td class="impress_cel-secondary-table -entrytime"></td>
+              <td class="impress_cel-secondary-table -exittime"></td>
+              <td class="impress_cel-secondary-table -entrytime"></td>
+              <td class="impress_cel-secondary-table -exittime"></td>
+              <td class="impress_cel-secondary-table -occurrences"></td>
+              <td class="impress_cel-secondary-table -observations"></td>
+            </tr>
+            <tr>
+              <td class="impress_cel-secondary-table -day">29</td>
+              <td class="impress_cel-secondary-table -rubric"></td>
+              <td class="impress_cel-secondary-table -entrytime"></td>
+              <td class="impress_cel-secondary-table -exittime"></td>
+              <td class="impress_cel-secondary-table -entrytime"></td>
+              <td class="impress_cel-secondary-table -exittime"></td>
+              <td class="impress_cel-secondary-table -occurrences"></td>
+              <td class="impress_cel-secondary-table -observations"></td>
+            </tr>
+            <tr>
+              <td class="impress_cel-secondary-table -day">30</td>
+              <td class="impress_cel-secondary-table -rubric"></td>
+              <td class="impress_cel-secondary-table -entrytime"></td>
+              <td class="impress_cel-secondary-table -exittime"></td>
+              <td class="impress_cel-secondary-table -entrytime"></td>
+              <td class="impress_cel-secondary-table -exittime"></td>
+              <td class="impress_cel-secondary-table -occurrences"></td>
+              <td class="impress_cel-secondary-table -observations"></td>
+            </tr>
+            <tr>
+              <td class="impress_cel-secondary-table -day">31</td>
+              <td class="impress_cel-secondary-table -rubric"></td>
+              <td class="impress_cel-secondary-table -entrytime"></td>
+              <td class="impress_cel-secondary-table -exittime"></td>
+              <td class="impress_cel-secondary-table -entrytime"></td>
+              <td class="impress_cel-secondary-table -exittime"></td>
+              <td class="impress_cel-secondary-table -occurrences"></td>
+              <td class="impress_cel-secondary-table -observations"></td>
+            </tr>
+          </tbody>
         </table>
         <footer id="impress_footer">
           <div id="impress_date-container">Data: ___/___/_____</div>
@@ -271,10 +637,10 @@
             </div>
           </div>
           <p id="impress_address">
-            Av. Conselheiro Furtado, 2520 - Cremação - CEP 66.040-100 - Belém/PA
+            Av. Conselheiro Furtado, 2520 - Cremação - CEP 66.063-060 - Belém/PA
           </p>
         </footer>
-        <div class="impress_button-container">
+        <div class="impress_button-container" id="impress_button-container">
           <button
             class="impress_btn"
             id="impress_btn-back"
@@ -285,7 +651,7 @@
           <button
             class="impress_btn"
             id="impress_btn-impress"
-            onclick="makePDF()"
+            onclick="makePDFTest()"
           >
             Imprimir
           </button>
@@ -293,5 +659,4 @@
       </div>
     </div>
   </body>
-  <script src="./scripts/script.js" defer></script>
 </html>
