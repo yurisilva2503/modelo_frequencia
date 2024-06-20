@@ -7,9 +7,9 @@
 }
 
 #impress_wrapper {
-  display: block;
+  display: none;
   width: 51%;
-  height: 100%;
+  height: 95%;
   font-family: Arial;
   font-weight: bold;
 }
@@ -22,7 +22,7 @@
   border-collapse: collapse;
   width: 100%;
   font-weight: bold;
-  font-size: 0.85em;
+  font-size: 0.9em;
 }
 
 .impress_primary-table-caption {
@@ -71,7 +71,6 @@
 
 .impress_cel-secondary-table.-subcolumn {
   text-align: center;
-  text-wrap: nowrap;
   font-size: .85em;
   padding: 4px;
   background-color: #8c9aa8;
@@ -82,15 +81,15 @@
 }
 
 .impress_cel-secondary-table.-subcolumn.-rubric {
-  width: 16%;
+  width: 14%;
 }
 
 .impress_cel-secondary-table.-subcolumn.-entrytime {
-  width: 10%;
+  width: 12%;
 }
 
 .impress_cel-secondary-table.-subcolumn.-exittime {
-  width: 10%;
+  width: 12%;
 }
 
 .impress_cel-secondary-table.-subcolumn.-occurrences {
@@ -129,12 +128,12 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  height: 100%;
   width: 100%;
+  height: 5%;
 }
 
 #impress_date-container {
-  padding-top: 5%;
+  margin-top: 2%;
   font-weight: bold;
 }
 
@@ -178,12 +177,12 @@
   font-size: 1.3em;
   font-weight: bold;
   color: #fff;
-  width: 200px;
+  width: 340px;
   height: 35px;
   border: none;
   border-radius: 3px;
   cursor: pointer;
-  transition: 0.2s all ease-in-out;
+  transition: 0.2s all ease-out;
   font-family: 'Poppins', Arial;
 }
 
@@ -218,10 +217,12 @@
 
 @media print {
   @page {
-    size: portrait;
     margin: 0;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
   }
+
   body {
-    background-color: #8c9aa8; 
+    margin-top: 14px;
   }
 }

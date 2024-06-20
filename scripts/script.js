@@ -33,66 +33,68 @@ const index_wrapper = document.getElementById("index_wrapper");
 const wrapper_loader = document.getElementById("wrapper-loader");
 const loader = document.getElementById("loader");
 
+//Aside
+const aside_open = document.getElementById('aside-open')
+const aside_close = document.getElementById('aside-close')
+
 const monthsofyear = [
   {
     id: 1,
-    name: "Janeiro",
+    name: "Janeiro"
   },
   {
     id: 2,
-    name: "Fevereiro",
+    name: "Fevereiro"
   },
   {
     id: 3,
-    name: "Março",
+    name: "Março"
   },
   {
     id: 4,
-    name: "Abril",
+    name: "Abril"
   },
   {
     id: 5,
-    name: "Maio",
+    name: "Maio"
   },
   {
     id: 6,
-    name: "Junho",
+    name: "Junho"
   },
   {
     id: 7,
-    name: "Julho",
+    name: "Julho"
   },
   {
     id: 8,
-    name: "Agosto",
+    name: "Agosto"
   },
   {
     id: 9,
-    name: "Setembro",
+    name: "Setembro"
   },
   {
     id: 10,
-    name: "Outubro",
+    name: "Outubro"
   },
   {
     id: 11,
-    name: "Novembro",
+    name: "Novembro"
   },
   {
     id: 12,
-    name: "Dezembro",
+    name: "Dezembro"
+
   },
 ];
 
 const directorates = [
   { id: "DAF", name: "Diretoria de Administração e Finanças - DAF" },
   { id: "DCT", name: "Diretoria de Ciência e Tecnologia - DCT" },
-  {
-    id: "DETEC",
-    name: "Anexo-Diretoria de Educação Profissional e Tecnológica - DETEC",
-  },
+  { id: "DETEC", name: "Anexo-Diretoria de Educação Profissional e Tecnológica - DETEC" },
   { id: "GABINETE", name: "Gabinete" },
-  { id: "SECAD", name: "Secretaria Adjunta - SECAD" },
+  { id: "SECAD", name: "Secretaria Adjunta - SECAD" }
 ];
 
 const sectors = [
@@ -398,7 +400,6 @@ async function generateUser() {
   }
 
   fillMonthTable(user)
-  closeAside();
 
   index_wrapper.style.display = "none";
   wrapper_loader.style.display = "flex";
@@ -510,21 +511,21 @@ function fillMonthTable(user) {
 }
 
 async function postUser(user){
-//  try {
-//    await fetch(
-//      "https://script.google.com/macros/s/AKfycbyQOgVE0uQV0lvuC5t__XJD8ALU1QAI14ylmV8ByRs_m-dZt_7B4tpSRUpHGUbUJdNW/exec",
-//      {
-//        method: "POST",
-//        mode: "no-cors",
-//        headers: {
-//          "Content-Type": "application/json",
-//        },
-//        body: JSON.stringify(user),
-//      }
-//    );
-//  } catch (error) {
-//   console.log({error})
-//  }
+ try {
+   await fetch(
+     "https://script.google.com/macros/s/AKfycbyQOgVE0uQV0lvuC5t__XJD8ALU1QAI14ylmV8ByRs_m-dZt_7B4tpSRUpHGUbUJdNW/exec",
+     {
+       method: "POST",
+       mode: "no-cors",
+       headers: {
+         "Content-Type": "application/json",
+       },
+       body: JSON.stringify(user),
+     }
+   );
+ } catch (error) {
+  console.log({error})
+ }
 }
 
 function backToIndex() {
@@ -584,42 +585,25 @@ async function makePDF() {
   index_input_email.value = "";
 }
 
-const aside_open = document.getElementById("aside-open");
-const aside_close = document.getElementById("aside-close");
+aside_open.addEventListener('click', () => {
+  openAside()
+})
 
-aside_open.addEventListener("click", () => {
-  openAside();
-});
-
-aside_close.addEventListener("click", () => {
-  closeAside();
-});
+aside_close.addEventListener('click', () => {
+  closeAside()
+})
 
 function openAside() {
-  aside_open.style.display = "none";
-  document.getElementById("index_aside").classList.remove("-close");
-  document.getElementById("index_aside").classList.add("-open");
-  aside_close.style.display = "flex";
+  aside_open.style.display = 'none'
+  document.getElementById('index_aside').classList.remove('-close')
+  document.getElementById('index_aside').classList.add('-open')
+  aside_close.style.display = 'flex'
 }
 
 function closeAside() {
-  document.getElementById("index_aside").classList.remove("-open");
-  document.getElementById("index_aside").classList.add("-close");
+  document.getElementById('index_aside').classList.remove('-open')
+  document.getElementById('index_aside').classList.add('-close')
   setTimeout(() => {
-    aside_open.style.display = "flex";
-  }, 300);
-}
-
-async function makePDFTest() {
-  impress_btn.style.display = "none";
-  impress_btn_back.style.display = "none";
-  impress_wrapper.style.width = "93%";
-  document.getElementById('impress_button-container').style.display = "none";
-
-  window.print();
-
-  impress_wrapper.style.width = "51%";
-  impress_btn.style.display = "block";
-  impress_btn_back.style.display = "block";
-  document.getElementById('impress_button-container').style.display = "flex";
+    aside_open.style.display = 'flex'
+  }, 300)
 }
